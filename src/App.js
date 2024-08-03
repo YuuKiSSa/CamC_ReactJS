@@ -4,7 +4,9 @@ import CameraList from "./Components/CameraList";
 import CameraDetail from "./Components/CameraDetail";
 import Navbar from "./Components/Page/Navbar";
 import Footer from "./Components/Page/Footer";
+import Login from "./Components/Login";
 import './CSS/App.css';
+import Home from "./Components/Home";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
               <Navbar />
               <div className="content">
                   <Routes>
+                      <Route exact path="/" element={<Home />} />
+                      <Route path="/login" element={<Login />} />
                       <Route path="/gallery" element={<CameraList />} />
                       <Route path="/camera/:id" element={<CameraDetail />} />
                   </Routes>

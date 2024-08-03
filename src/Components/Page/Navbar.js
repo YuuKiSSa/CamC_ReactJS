@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../../CSS/Navbar.css"
-import Login from "./Login";
+import LoginButton from "./LoginButton";
 
 function Navbar() {
     return (
@@ -17,7 +17,7 @@ function Navbar() {
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
                 <div>
-                    <Login />
+                    <LoginButton />
                 </div>
             </div>
         </nav>
