@@ -3,11 +3,13 @@ import axios from 'axios';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import {useParams} from "react-router-dom";
 
 const CameraLineChart = ({ cameraModel }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +17,7 @@ const CameraLineChart = ({ cameraModel }) => {
       setError(null);
 
       try {
-        const response = await axios.get(`http://13.213.1.218/predict/${cameraModel}`);
+        const response = await axios.get(`http://13.213.1.218/predict/${id}`);
         console.log('API response data:', response.data);
         
         const formattedData = Object.entries(response.data).map(([date, value]) => ({
