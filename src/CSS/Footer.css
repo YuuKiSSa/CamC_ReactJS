@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    background-color: white;
+    border-top: 1px solid gray;
+}
+
+.left, .right {
+    flex: 0.3;
+    color: black;
+}
+
+.left {
+    text-align: left;
+}
+
+.right a{
+    text-align: right;
+    color: black;
+}
