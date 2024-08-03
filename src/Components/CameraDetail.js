@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../CSS/CameraDetail.css'
+import CameraLineChart from './Graph/CameraLineChart';
 
 const CameraDetail = () => {
     const { id } = useParams();
@@ -36,6 +37,9 @@ const CameraDetail = () => {
                 <p><strong>Video Resolution:</strong> {camera.videoResolution}K</p>
                 <p><strong>Video Rate:</strong> {camera.videoRate} fps</p>
                 <p><strong>ISO:</strong> {camera.iso}</p>
+            </div>
+            <div className='predict-graph'>
+                <CameraLineChart />
             </div>
         </div>
     );
