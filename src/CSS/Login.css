@@ -29,7 +29,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #d9f0ff;
+    background-color: #A8E0B7;
     border-radius: 15px;
 }
 
@@ -58,7 +58,7 @@ body, html {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #007B55;
+    background-color: #397D54;
     color: #ffffff;
     cursor: pointer;
 }

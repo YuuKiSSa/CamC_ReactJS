@@ -1,6 +1,6 @@
 /* NavBar.css */
 .navbar {
-    background-color: #b6e4c8;
+    background-color: #CBEAD1;
     color: #333;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
@@ -20,7 +20,7 @@
     font-size: 1.8em;
 }
 .logo-cam {
-    color: #007B55;
+    color: #397D54;
 }
 
 .logo-c {
@@ -47,7 +47,7 @@
 }
 
 .nav a:hover {
-    color: #007B55;
+    color: #397D54;
 }
 
 .auth-buttons {
@@ -67,13 +67,12 @@
 }
 
 .auth-buttons a:hover {
-    color: #007B55;
+    color: #397D54;
 }
 
 .sign-up-button {
-    border: 2px solid #007B55;
+    border: 2px solid #397D54;
     background-color: #ffffff;
-    color: #007B55;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -81,14 +80,8 @@
     font-size: 16px;
 }
 
-.sign-up-button a {
-    color: #007B55;
-    text-decoration: none;
-}
-
 .sign-up-button:hover {
-    background-color: #007B55;
-    color: #ffffff;
+    background-color: #397D54;
 }
 
 .sign-up-button a:hover {

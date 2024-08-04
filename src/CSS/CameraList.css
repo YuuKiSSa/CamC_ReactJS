@@ -1,8 +1,44 @@
-/* CameraList.css */
+.camera-list-container {
+    display: flex;
+}
 
-.camera-list {
-    text-align: left;
+.sidebar {
+    width: 200px;
     padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.camera-list-content {
+    flex: 1;
+    padding: 20px;
+}
+.camera-list-content h1{
+    text-align: left;
+}
+
+.search-bar {
+    margin: 20px 0;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
 }
 
 .camera-grid {
@@ -17,53 +53,35 @@
 }
 
 .camera-item {
-    border: 1px solid #ccc;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    height: 400px;
-    overflow: hidden;
 }
 
 .camera-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
 }
 
 .camera-image-container {
     width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 0;
+    position: relative;
     overflow: hidden;
-    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color:white;
 }
 
 .camera-image {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.camera-details {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: left;
-    padding: 0 10px;
-}
-
-h2 {
-    margin: 10px 0;
-    font-size: 1.2em;
-    text-align: center;
-}
-
-p {
-    margin: 5px 0;
-    font-size: 1em;
-    text-align: center;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .pagination {
@@ -73,21 +91,24 @@ p {
 }
 
 .pagination-button {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px 15px;
+    background-color:#73C088;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     margin: 0 5px;
-    background-color: #f9f9f9;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s;
 }
 
-.pagination-button:hover {
-    background-color: #ddd;
+.pagination-button:disabled {
+    background-color: #C8EAD1;
+    cursor: not-allowed;
 }
 
 .pagination-button.active {
-    background-color: #007B55;
-    color: #fff;
-    border-color: #007bff;
+    background-color: #197D54;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background-color: #197D54;
 }
