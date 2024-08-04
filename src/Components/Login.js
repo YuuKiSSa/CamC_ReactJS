@@ -22,11 +22,8 @@ function Login() {
 
     return (
         <div className="login-container">
-            <div className="image-section">
-                <img src="/login.png" alt="Background" className="background-image"/>
-            </div>
-            <div className="login-section">
-                <form onSubmit={handleLogin} className="login-box">
+            <div className="login-box">
+                <form onSubmit={handleLogin}>
                     <input
                         type="text"
                         placeholder="Username"

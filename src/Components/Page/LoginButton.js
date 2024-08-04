@@ -7,18 +7,16 @@ function LoginButton() {
     const location = useLocation();
 
     useEffect(() => {
-        if (location.state?.fromLogin) {
-            const fetchUser = async () => {
-                try {
-                    const response = await fetch('http://localhost:8080/api/current-user', { credentials: 'include' });
-                    const data = await response.json();
-                    setUser(data.username);
-                } catch (error) {
-                    console.error('Failed to fetch user', error);
-                }
-            };
-            fetchUser();
-        }
+        const fetchUser = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/api/current-user', { credentials: 'include' });
+                const data = await response.json();
+                setUser(data.username);
+            } catch (error) {
+                console.error('Failed to fetch user', error);
+            }
+        };
+        fetchUser();
     }, [location.state, setUser]);
 
     const handleLogout = async () => {
