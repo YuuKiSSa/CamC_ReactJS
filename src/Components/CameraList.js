@@ -20,16 +20,22 @@ const CameraList = () => {
     useEffect(() => {
         const fetchCameras = async () => {
             const response_list = await fetch(`http://localhost:8080/api/list`);
-            const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
             const data_list = await response_list.json();
-            const data_like = await response_like.json();
             setCameras(data_list.cameras);
-            setCamerasLike(data_like)
         };
+        const fetchCamerasLike = async () => {
+            const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
+            const data_like = await response_like.json();
+            setCamerasLike(data_like);
+        }
         fetchCameras();
-    }, []);
 
-    console.log("cameras_like"+cameras_like);
+        try{
+            fetchCamerasLike();
+        }catch(error){
+            console.error('Failed to fetch cameras you like', error);
+        }
+    }, []);
 
     const indexOfLastCamera = currentPage * PAGE_SIZE;
     const indexOfFirstCamera = indexOfLastCamera - PAGE_SIZE;
@@ -69,23 +75,29 @@ const CameraList = () => {
         <div className="camera-list-container">
             <FilterBar filters={filters} setFilters={setFilters} />
             <div className="camera-list-content">
-                <h1>You May Like</h1>
-                <div className="camera-grid">
-                    {cameras_like.map((camera) => (
-                        <Link key={camera.id} to={`/camera/${camera.id}`} className="camera-item-link">
-                            <div className="camera-item">
-                                {camera.imageUrl && (
-                                    <div className="camera-image-container">
-                                        <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`}
-                                             className="camera-image"/>
+                {cameras_like.length > 0 ? (
+                    <div>
+                        <h1>You May Like</h1>
+                        <div className="camera-grid">
+                            {cameras_like.map((camera) => (
+                                <Link key={camera.id} to={`/camera/${camera.id}`} className="camera-item-link">
+                                    <div className="camera-item">
+                                        {camera.imageUrl && (
+                                            <div className="camera-image-container">
+                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`}
+                                                     className="camera-image"/>
+                                            </div>
+                                        )}
+                                        <h2>{camera.brand} {camera.model}</h2>
+                                        <p>Price: ￥{camera.latestPrice}</p>
                                     </div>
-                                )}
-                                <h2>{camera.brand} {camera.model}</h2>
-                                <p>Price: ￥{camera.latestPrice}</p>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
                 <h1>Camera List</h1>
                 <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
                 <div className="camera-grid">

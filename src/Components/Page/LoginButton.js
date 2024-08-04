@@ -20,13 +20,18 @@ function LoginButton() {
     }, [location.state, setUser]);
 
     const handleLogout = async () => {
-        try {
-            const response = await axios.post('http://localhost:8080/api/logout', null, { withCredentials: true });
-            console.log(response);
-            setUser(null);
-        } catch (error) {
-            console.error('Logout failed', error);
+        const confirm_logout = window.confirm('Are you sure you want to logout?');
+        if (confirm_logout) {
+            try {
+                const response = await axios.post('http://localhost:8080/api/logout', null, { withCredentials: true });
+                console.log(response);
+                setUser(null);
+            } catch (error) {
+                console.error('Logout failed', error);
+            }
+            window.location.reload();
         }
+
     };
 
     return (
