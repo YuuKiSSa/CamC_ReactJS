@@ -1,0 +1,61 @@
+.camera-price-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .price {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .price span {
+    flex: 1;
+  }
+  
+  .platform-name {
+    flex: 0.2;
+  }
+  
+  .product-name {
+    flex: 0.4; 
+  }
+  
+  .product-price {
+    flex: 0.2; 
+  }
+  
+  button {
+    flex: 0.2; 
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #73C088;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #397D54;
+  }
+  
+  .lowest-price .product-price {
+    color: red;
+  }
