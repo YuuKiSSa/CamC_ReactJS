@@ -25,16 +25,14 @@ const CameraList = () => {
         };
         const fetchCamerasLike = async () => {
             const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
-            const data_like = await response_like.json();
-            setCamerasLike(data_like);
+            if (response_like.status !== 401) {
+                const data_like = await response_like.json();
+                setCamerasLike(data_like);
+            }
         }
         fetchCameras();
 
-        try{
-            fetchCamerasLike();
-        }catch(error){
-            console.error('Failed to fetch cameras you like', error);
-        }
+        fetchCamerasLike()
     }, []);
 
     const indexOfLastCamera = currentPage * PAGE_SIZE;
