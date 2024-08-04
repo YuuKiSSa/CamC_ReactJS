@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CameraList from "./Components/CameraList";
-import CameraDetail from "./Components/CameraDetail";
 import Navbar from "./Components/Page/Navbar";
 import Footer from "./Components/Page/Footer";
 import Login from "./Components/Login";
 import './CSS/App.css';
 import Home from "./Components/Home";
+import CameraDetail from './Components/CameraDetail';
 
 function App() {
   return (

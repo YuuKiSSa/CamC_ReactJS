@@ -82,8 +82,7 @@ const CameraList = () => {
                                     <div className="camera-item">
                                         {camera.imageUrl && (
                                             <div className="camera-image-container">
-                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`}
-                                                     className="camera-image"/>
+                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-image"/>
                                             </div>
                                         )}
                                         <h2>{camera.brand} {camera.model}</h2>
