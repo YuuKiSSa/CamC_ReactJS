@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import '../CSS/CameraDetail.css'
+import '../CSS/CameraDetail.css';
 import CameraLineChart from './Graph/CameraLineChart';
+import CameraPrice from './Page/CameraPrice';
+import UserReviews from './Page/UserReviews';
+import PriceHistoryChart from './Graph/PriceHistoryChart';
+import CameraDetails from './Page/CameraDetails';
 
 const CameraDetail = () => {
     const { id } = useParams();
@@ -9,7 +13,7 @@ const CameraDetail = () => {
 
     useEffect(() => {
         const fetchCamera = async () => {
-            const response = await fetch(`http://localhost:8080/api/camera/${id}`);
+            const response = await fetch(`http://localhost:8080/api/main/${id}`);
             const data = await response.json();
             setCamera(data);
         };
@@ -22,27 +26,59 @@ const CameraDetail = () => {
     }
 
     return (
-        <div className='camera-detail'>
-            <div className="camera-image-container">
-                <img src={camera.url} alt={`${camera.brand} ${camera.model}`} className="camera-image"/>
+        <div id='camera-detail'>
+            <div className="image">
+                <img src={camera.imageUrl} alt={camera.productName} className="camera-image"/>
             </div>
-            <h1>{camera.brand} {camera.model}</h1>
-            <div className="camera-details">
-                <p><strong>Category:</strong> {camera.category}</p>
-                <p><strong>Release Time:</strong> {camera.releaseTime}</p>
-                <p><strong>Initial Price:</strong> ￥{camera.initialPrice}</p>
-                <p><strong>Effective Pixel:</strong> {camera.effectivePixel} MP</p>
-                <p><strong>Focus Point:</strong> {camera.focusPoint || 'N/A'}</p>
-                <p><strong>Continuous Shot:</strong> {camera.continuousShot} fps</p>
-                <p><strong>Video Resolution:</strong> {camera.videoResolution}K</p>
-                <p><strong>Video Rate:</strong> {camera.videoRate} fps</p>
-                <p><strong>ISO:</strong> {camera.iso}</p>
+            <div className="camera-detail">
+                <h1>{camera.productName}</h1>
+                <div className="details">
+                    <div className="details1"> 
+                        <span className="color">Price</span>
+                        <span className="prices">${camera.lowestPrice}</span>
+                        <span className="shic">Initial price<span className="prices2">${camera.initialPrice}</span></span>
+                        <span className="yis">Average Rate: {camera.averageRate}</span>
+                    </div>
+                    <h3>Predict trend:</h3>
+                    <div className='predict-graph'>
+                        <CameraLineChart />
+                    </div>
+                    <div className="favorite">
+                        <a href="#"><button className="favoritecolor">Add to Favorite</button></a>
+                    </div>
+                </div>
             </div>
-            <div className='predict-graph'>
-                <CameraLineChart />
+            <div id="top-buttons">
+                <button onClick={() => scrollToSection('compare')}>Camera Price</button>
+                <button onClick={() => scrollToSection('review')}>User Reviews</button>
+                <button onClick={() => scrollToSection('history-graph')}>Price History</button>
+                <button onClick={() => scrollToSection('info')}>Camera Details</button>
+            </div>
+            <div className="divider"></div>
+            <div id="compare">
+                <CameraPrice />
+            </div>
+            <div className="divider"></div>
+            <div id="review">
+                <UserReviews />
+            </div>
+            <div className="divider"></div>
+            <div id="history-graph">
+                <PriceHistoryChart />
+            </div>
+            <div className="divider"></div>
+            <div id="info">
+                <CameraDetails />
             </div>
         </div>
     );
+};
+
+const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
 };
 
 export default CameraDetail;

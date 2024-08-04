@@ -1,0 +1,24 @@
+.camera-details {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .camera-details h2 {
+    margin-bottom: 20px;
+  }
+  
+  .detail-item {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .separator {
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0;
+  }
