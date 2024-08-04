@@ -1,9 +1,9 @@
-// src/Components/Page/CameraDetails.js
+// src/Components/Page/CameraInfo.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../../CSS/CameraDetails.css';
+import '../../CSS/CameraInfo.css';
 
-const CameraDetails = () => {
+const CameraInfo = () => {
   const { id } = useParams();
   const [details, setDetails] = useState(null);
 
@@ -85,4 +85,4 @@ const CameraDetails = () => {
   );
 };
 
-export default CameraDetails;
+export default CameraInfo;

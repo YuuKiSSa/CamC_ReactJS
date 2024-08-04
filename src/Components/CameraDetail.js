@@ -5,7 +5,7 @@ import CameraLineChart from './Graph/CameraLineChart';
 import CameraPrice from './Page/CameraPrice';
 import UserReviews from './Page/UserReviews';
 import PriceHistoryChart from './Graph/PriceHistoryChart';
-import CameraDetails from './Page/CameraDetails';
+import CameraInfo from './Page/CameraInfo';
 
 const CameraDetail = () => {
     const { id } = useParams();
@@ -68,7 +68,7 @@ const CameraDetail = () => {
             </div>
             <div className="divider"></div>
             <div id="info">
-                <CameraDetails />
+                <CameraInfo />
             </div>
         </div>
     );
