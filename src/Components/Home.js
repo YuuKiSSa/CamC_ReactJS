@@ -40,7 +40,7 @@ const MainContent = () => (
                 </div>
                 <div className="about">
                     <h2>About</h2>
-                    <p>🏠 Home</p>
+                    <p>Home</p>
                     <p>Features</p>
                     <p>FAQs</p>
                     <p>Reviews</p>

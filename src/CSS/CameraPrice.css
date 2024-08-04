@@ -3,7 +3,7 @@
     margin: 20px;
   }
   
-  h2 {
+  .camera-price-container h2 {
     font-size: 24px;
     margin-bottom: 20px;
   }
@@ -41,7 +41,7 @@
     flex: 0.2; 
   }
   
-  button {
+  .camera-price-container button {
     flex: 0.2; 
     margin-left: 10px;
     padding: 5px 10px;
@@ -52,7 +52,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .camera-price-container button:hover {
     background-color: #397D54;
   }
   

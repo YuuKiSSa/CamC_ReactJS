@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../CSS/CameraList.css'
 import {Link} from "react-router-dom";
-import Preference from './Gallery/Preference';
 import SearchBar from './Gallery/SearchBar';
 import FilterBar from "./Gallery/FilterBar";
 
@@ -39,7 +38,8 @@ const CameraList = () => {
     const indexOfFirstCamera = indexOfLastCamera - PAGE_SIZE;
 
     const filteredCameras = cameras.filter(camera =>
-        camera.brand.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (camera.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            camera.model.toLowerCase().includes(searchTerm.toLowerCase())) &&
         (filters.brand === '' || camera.brand === filters.brand) &&
         (filters.priceRange === '' || (
             filters.priceRange === 'low' && camera.initialPrice < 5000 ||
@@ -82,7 +82,7 @@ const CameraList = () => {
                                     <div className="camera-item">
                                         {camera.imageUrl && (
                                             <div className="camera-image-container">
-                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-image"/>
+                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-list-image"/>
                                             </div>
                                         )}
                                         <h2>{camera.brand} {camera.model}</h2>
@@ -104,7 +104,7 @@ const CameraList = () => {
                                 {camera.imageUrl && (
                                     <div className="camera-image-container">
                                         <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`}
-                                             className="camera-image"/>
+                                             className="camera-list-image"/>
                                     </div>
                                 )}
                                 <h2>{camera.brand} {camera.model}</h2>

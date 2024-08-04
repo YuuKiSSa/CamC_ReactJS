@@ -1,10 +1,11 @@
 // components/FilterBar.js
 import React from 'react';
+import "../../CSS/Filter.css"
 
 const FilterBar = ({ filters, setFilters }) => {
     return (
         <div className="sidebar">
-            <h2>Filters</h2>
+            <h1>Filter</h1>
             <div className="filter-group">
                 <label htmlFor="brand">Brand</label>
                 <select id="brand" value={filters.brand} onChange={e => setFilters({ ...filters, brand: e.target.value })}>
