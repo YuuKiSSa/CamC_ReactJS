@@ -14,6 +14,7 @@ function Navbar() {
                 <ul className="nav">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/gallery">Camera</Link></li>
+                    <li><Link to="/favorite">Favorite</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
                 <div>
