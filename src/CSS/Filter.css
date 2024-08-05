@@ -65,3 +65,12 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.sign-up-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.sign-up-link a:hover {
+    text-decoration: underline;
+}

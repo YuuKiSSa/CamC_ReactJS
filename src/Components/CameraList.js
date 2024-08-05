@@ -83,7 +83,7 @@ const CameraList = () => {
 
     return (
         <div className="camera-list-container">
-            <FilterBar filters={filters} setFilters={setFilters} />
+            <FilterBar filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage} />
             <div className="camera-list-content">
                 {cameras_like.length > 0 ? (
                     <div>
@@ -108,7 +108,7 @@ const CameraList = () => {
                     <div></div>
                 )}
                 <h1>Camera List</h1>
-                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCurrentPage={setCurrentPage} />
                 <div className="camera-grid">
                     {currentCameras.map((camera) => (
                         <Link key={camera.id} to={`/camera/${camera.id}`} className="camera-item-link">

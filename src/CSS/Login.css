@@ -41,3 +41,20 @@
     color: red;
     margin-top: 10px;
 }
+
+.login-links {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-links a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+

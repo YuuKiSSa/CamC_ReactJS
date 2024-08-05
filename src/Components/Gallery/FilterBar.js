@@ -2,13 +2,15 @@
 import React from 'react';
 import "../../CSS/Filter.css"
 
-const FilterBar = ({ filters, setFilters }) => {
+const FilterBar = ({ filters, setFilters, setCurrentPage }) => {
     const handleBrandChange = (brand) => {
         setFilters({ ...filters, brand });
+        setCurrentPage(1);
     };
 
     const handlePriceRangeChange = (field, value) => {
         setFilters({ ...filters, priceRange: { ...filters.priceRange, [field]: value } });
+        setCurrentPage(1);
     };
 
     return (

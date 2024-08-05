@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "../CSS/Login.css"
+import {Link} from "react-router-dom";
 
 function SignUp() {
     const [username, setUsername] = React.useState('');
@@ -39,6 +40,7 @@ function SignUp() {
                     <button type="submit">Sign Up</button>
                     {error && <div className="error-message">{error}</div>}
                 </form>
+                <p className="sign-up-link">Already have an account?  <Link to="/login">Login</Link></p>
             </div>
         </div>
     );

@@ -2,7 +2,12 @@
 import React from 'react';
 import "../../CSS/SearchBar.css"
 
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, setCurrentPage }) => {
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value);
+        setCurrentPage(1);
+    };
+
     return (
         <div className="search-bar">
             <i className="fas fa-search search-icon"></i>
@@ -10,7 +15,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
                 type="text"
                 placeholder="What are you looking for?"
                 value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
+                onChange={handleChange}
             />
         </div>
     );

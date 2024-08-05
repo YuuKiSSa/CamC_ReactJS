@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../CSS/Login.css"
 
 function Login() {
@@ -40,6 +40,10 @@ function Login() {
                     <button type="submit">Login</button>
                     {error && <div className="error-message">{error}</div>}
                 </form>
+                <div className="login-links">
+                    <Link to="/forgot-password">Forgot Password?</Link>
+                    <p>Don't have an account?  <Link to="/signup">Sign Up</Link></p>
+                </div>
             </div>
         </div>
     );
