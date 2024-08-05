@@ -71,8 +71,8 @@ const CameraDetail = () => {
                 <div className="details">
                     <div className="details1"> 
                         <span className="color">Price</span>
-                        <span className="prices">${camera.lowestPrice}</span>
-                        <span className="shic">Initial price<span className="prices2">${camera.initialPrice}</span></span>
+                        <span className="prices">￥{camera.lowestPrice}</span>
+                        <span className="shic">Initial price<span className="prices2">￥{camera.initialPrice}</span></span>
                         <span className="yis">Average Rate: {camera.averageRate}</span>
                     </div>
                     <h3>Predict trend:</h3>

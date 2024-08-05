@@ -92,3 +92,18 @@
 .pagination-button:hover:not(:disabled) {
     background-color: #197D54;
 }
+
+.camera-list-price {
+    display: flex;
+    align-items: center;
+}
+
+.initial-price {
+    color: gray;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.latest-price {
+    color: black;
+}

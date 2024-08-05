@@ -44,7 +44,7 @@ function LoginButton() {
                 <div className="auth-buttons">
                     <h2><Link to="/login">Login</Link></h2>
                     <button className="sign-up-button">
-                        <Link to="/sign-up">Sign up</Link>
+                        <Link to="/signup">Sign up</Link>
                     </button>
                 </div>
             )}
