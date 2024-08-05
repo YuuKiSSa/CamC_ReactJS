@@ -7,6 +7,7 @@ import Login from "./Components/Login";
 import './CSS/App.css';
 import Home from "./Components/Home";
 import CameraDetail from './Components/CameraDetail';
+import SignUp from "./Components/SignUp";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
                   <Routes>
                       <Route exact path="/" element={<Home />} />
                       <Route path="/login" element={<Login />} />
+                      <Route path="/signup" element={<SignUp />} />
                       <Route path="/gallery" element={<CameraList />} />
                       <Route path="/camera/:id" element={<CameraDetail />} />
                   </Routes>

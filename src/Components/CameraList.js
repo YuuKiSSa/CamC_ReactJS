@@ -82,11 +82,15 @@ const CameraList = () => {
                                     <div className="camera-item">
                                         {camera.imageUrl && (
                                             <div className="camera-image-container">
-                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-list-image"/>
+                                                <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`}
+                                                     className="camera-list-image"/>
                                             </div>
                                         )}
                                         <h2>{camera.brand} {camera.model}</h2>
-                                        <p>Price: ￥{camera.latestPrice}</p>
+                                        <div className="camera-list-price">
+                                            <p className="initial-price">￥{camera.initialPrice}</p>
+                                            <p className="latest-price">￥{camera.latestPrice}</p>
+                                        </div>
                                     </div>
                                 </Link>
                             ))}
@@ -108,7 +112,10 @@ const CameraList = () => {
                                     </div>
                                 )}
                                 <h2>{camera.brand} {camera.model}</h2>
-                                <p>Price: ￥{camera.latestPrice}</p>
+                                <div className="camera-list-price">
+                                    <p className="initial-price">￥{camera.initialPrice}</p>
+                                    <p className="latest-price">￥{camera.latestPrice}</p>
+                                </div>
                             </div>
                         </Link>
                     ))}

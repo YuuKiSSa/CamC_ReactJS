@@ -55,7 +55,7 @@ const CameraInfo = () => {
       </div>
       <div className="separator" />
       <div className="detail-item">
-        <span className="detail-label">Initial Price:</span> ${initialPrice.toFixed(2)}
+        <span className="detail-label">Initial Price:</span> ￥{initialPrice.toFixed(2)}
       </div>
       <div className="separator" />
       <div className="detail-item">
