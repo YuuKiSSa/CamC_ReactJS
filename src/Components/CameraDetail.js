@@ -6,23 +6,59 @@ import CameraPrice from './Page/CameraPrice';
 import UserReviews from './Page/UserReviews';
 import PriceHistoryChart from './Graph/PriceHistoryChart';
 import CameraInfo from './Page/CameraInfo';
+import axios from 'axios';
 
 const CameraDetail = () => {
     const { id } = useParams();
     const [camera, setCamera] = useState(null);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     useEffect(() => {
         const fetchCamera = async () => {
-            const response = await fetch(`http://localhost:8080/api/main/${id}`);
-            const data = await response.json();
-            setCamera(data);
+            try {
+                const response = await fetch(`http://localhost:8080/api/main/${id}`);
+                const data = await response.json();
+                setCamera(data);
+            } catch (error) {
+                console.error('Failed to fetch camera data:', error);
+            }
         };
 
         fetchCamera();
     }, [id]);
 
+    const handleAddToFavorite = async () => {
+        if (!camera) return;
+
+        const idealPrice = window.prompt('Enter your ideal price for this camera:', camera.lowestPrice);
+
+        if (idealPrice === null || isNaN(idealPrice) || parseFloat(idealPrice) <= 0) {
+            alert('Please enter a valid ideal price.');
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:8080/api/favorite/add', {
+                cameraId: id,
+                idealPrice: parseFloat(idealPrice)
+            }, {
+                withCredentials: true
+            });
+
+            if (response.status === 200) {
+                setIsFavorite(true);
+                alert('Added to favorites successfully!');
+            } else {
+                alert('Failed to add to favorites.');
+            }
+        } catch (error) {
+            console.error('Failed to add to favorites:', error);
+            alert('Failed to add to favorites. Please try again later.');
+        }
+    };
+
     if (!camera) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>; // or you could use a spinner/loading component
     }
 
     return (
@@ -44,7 +80,9 @@ const CameraDetail = () => {
                         <CameraLineChart />
                     </div>
                     <div className="favorite">
-                        <a href="#"><button className="favoritecolor">Add to Favorite</button></a>
+                        <button onClick={handleAddToFavorite}>
+                            {isFavorite ? 'Added to Favorite' : 'Add to Favorite'}
+                        </button>
                     </div>
                 </div>
             </div>

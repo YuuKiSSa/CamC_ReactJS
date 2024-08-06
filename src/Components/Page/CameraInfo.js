@@ -1,4 +1,3 @@
-// src/Components/Page/CameraInfo.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../CSS/CameraInfo.css';
@@ -55,7 +54,7 @@ const CameraInfo = () => {
       </div>
       <div className="separator" />
       <div className="detail-item">
-        <span className="detail-label">Initial Price:</span> ${initialPrice.toFixed(2)}
+        <span className="detail-label">Initial Price:</span> ${initialPrice ? initialPrice.toFixed(2) : 'N/A'}
       </div>
       <div className="separator" />
       <div className="detail-item">

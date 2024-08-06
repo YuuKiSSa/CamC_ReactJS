@@ -1,39 +1,60 @@
 /* Favorite.css */
 
-.camera-item-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    margin-bottom: 1rem;
-}
-
 .camera-item {
     display: flex;
-    align-items: flex-start;
-    border-bottom: 1px solid #ddd;
-    padding: 1rem;
+    align-items: center; /* Vertically center items */
+    border-bottom: 1px solid #ddd; /* Horizontal line between items */
+    padding: 5px 10px; /* Padding around the item */
+    margin-bottom: 10px; /* Space between items */
+    justify-content: space-between; /* Ensure content is spaced between the link and button */
+}
+
+.camera-item:last-child {
+    border-bottom: none; /* Remove bottom border for the last item */
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+    flex: 1; /* Allow the link to take up available space */
 }
 
 .image {
-    flex-shrink: 0;
-    margin-right: 1rem;
+    margin-right: 10px; /* Space between image and info */
 }
 
 .camera-list-image {
-    width: 150px;
-    height: auto;
-    object-fit: cover;
+    width: 80px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .info {
-    flex-grow: 1;
+    flex: 1; /* Allow info to take up available space */
 }
 
-h2 {
+.info h2 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1em; /* Adjust size as needed */
 }
 
-p {
-    margin: 0.5rem 0;
+.info p {
+    margin: 2px 0; /* Reduced margin for a more compact design */
+    font-size: 0.9em; /* Adjust size as needed */
+}
+
+button {
+    background-color: #f44; /* Red background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 5px 8px; /* Padding for the button */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em; /* Adjust size as needed */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+button:hover {
+    background-color: #d33; /* Darker red on hover */
 }

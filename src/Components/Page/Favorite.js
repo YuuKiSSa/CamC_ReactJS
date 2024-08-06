@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "../../CSS/Favorite.css";
+import axios from "axios";
 
 const Favorite = () => {
     const [redirect, setRedirect] = useState(false);
@@ -29,14 +30,17 @@ const Favorite = () => {
         const fetchCameras = async () => {
             try {
                 const response_cameras = favorites.map(async (favorite) => {
-                    const response_camera = await fetch(`http://localhost:8080/api/camera/${favorite.cameraId}`);
+                    const response_camera = await fetch(`http://localhost:8080/api/main/${favorite.cameraId}`);
+                    if (!response_camera.ok) {
+                        throw new Error(`Failed to fetch camera with ID ${favorite.cameraId}`);
+                    }
                     const data_camera = await response_camera.json();
-                    return { ...data_camera, idealPrice: favorite.idealPrice };
+                    return { ...data_camera, idealPrice: favorite.idealPrice, id: favorite.cameraId};
                 });
                 const data_cameras = await Promise.all(response_cameras);
                 setCameras(data_cameras);
             } catch (error) {
-                console.error("Failed to fetch cameras: ", error);
+                console.error("Failed to fetch cameras:", error);
             }
         };
 
@@ -44,6 +48,26 @@ const Favorite = () => {
             fetchCameras();
         }
     }, [favorites]);
+
+    const handleDelete = async (cameraId) => {
+        const confirm_delete = window.confirm('Are you sure you want to unfavorite this item?');
+        if (confirm_delete) {
+            try {
+                console.log('Sending delete request for cameraId:', cameraId);
+                const response = await axios.delete('http://localhost:8080/api/favorite/delete', {
+                    data: { cameraId },
+                    withCredentials: true
+                });
+                console.log('Delete response:', response.data);
+    
+                setFavorites(prevFavorites => prevFavorites.filter(favorite => favorite.cameraId !== cameraId));
+                setCameras(prevCameras => prevCameras.filter(camera => camera.id !== cameraId));
+            } catch (error) {
+                console.error('Failed to delete item:', error);
+                alert('Failed to delete item. Please try again later.');
+            }
+        }
+    };
 
     if (redirect) {
         return <Navigate to="/login" />;
@@ -56,18 +80,20 @@ const Favorite = () => {
             ) : (
                 <div>
                     {cameras.map((camera) => (
-                        <Link key={camera.id} to={`/camera/${camera.id}`} className="camera-item-link">
-                            <div className="camera-item">
+                        <div key={camera.id} className="camera-item">
+                            <Link to={`/camera/${camera.id}`} className="link">
                                 <div className="image">
                                     <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-list-image"/>
                                 </div>
                                 <div className="info">
-                                    <h2>{camera.brand} {camera.model}</h2>                                    
-                                    <p>Current Price: ￥{camera.latestPrice}</p>
+                                    <h2>{camera.productName}</h2>                                    
+                                    <p>Lowest Price: ￥{camera.lowestPrice}</p>
                                     <p>Ideal Price: ¥{camera.idealPrice}</p>
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
+                            <button onClick={() => handleDelete(camera.id)}>Unfavorite</button>
+                            {/* <pre>{JSON.stringify(camera, null, 2)}</pre> */}
+                        </div>
                     ))}
                 </div>
             )}

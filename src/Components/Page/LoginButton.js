@@ -31,7 +31,6 @@ function LoginButton() {
             }
             window.location.reload();
         }
-
     };
 
     return (
