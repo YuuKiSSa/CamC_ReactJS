@@ -18,32 +18,20 @@ const CameraList = () => {
 
     useEffect(() => {
         const fetchCameras = async () => {
-            try {
-                const response_list = await fetch(`http://localhost:8080/api/list`);
-                if (!response_list.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data_list = await response_list.json();
-                setCameras(data_list.cameras);
-            } catch (error) {
-                console.error('Failed to fetch cameras:', error);
-            }
+            const response_list = await fetch(`http://localhost:8080/api/list`);
+            const data_list = await response_list.json();
+            setCameras(data_list.cameras);
         };
-    
         const fetchCamerasLike = async () => {
-            try {
-                const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
-                if (response_like.status !== 401) {
-                    const data_like = await response_like.json();
-                    setCamerasLike(data_like);
-                }
-            } catch (error) {
-                console.error('Failed to fetch "you may like" cameras:', error);
+            const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
+            if (response_like.status !== 401) {
+                const data_like = await response_like.json();
+                setCamerasLike(data_like);
             }
-        };
-    
+        }
         fetchCameras();
-        fetchCamerasLike();
+
+        fetchCamerasLike()
     }, []);
 
     const indexOfLastCamera = currentPage * PAGE_SIZE;
@@ -83,7 +71,7 @@ const CameraList = () => {
 
     return (
         <div className="camera-list-container">
-            <FilterBar filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage} />
+            <FilterBar filters={filters} setFilters={setFilters} />
             <div className="camera-list-content">
                 {cameras_like.length > 0 ? (
                     <div>
@@ -108,7 +96,7 @@ const CameraList = () => {
                     <div></div>
                 )}
                 <h1>Camera List</h1>
-                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCurrentPage={setCurrentPage} />
+                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
                 <div className="camera-grid">
                     {currentCameras.map((camera) => (
                         <Link key={camera.id} to={`/camera/${camera.id}`} className="camera-item-link">
@@ -121,7 +109,6 @@ const CameraList = () => {
                                 )}
                                 <h2>{camera.brand} {camera.model}</h2>
                                 <p>Price: ￥{camera.latestPrice}</p>
-                                {/* <pre>{JSON.stringify(camera, null, 2)}</pre> */}
                             </div>
                         </Link>
                     ))}
@@ -130,17 +117,26 @@ const CameraList = () => {
                     <button
                         onClick={handlePrevious}
                         className="pagination-button"
-                        disabled={currentPage === 1}> &lt; Prev </button>
+                        disabled={currentPage === 1}
+                    >
+                        &lt; Prev
+                    </button>
                     {pageNumbers.map(number => (
-                        <button key={number}
+                        <button
+                            key={number}
                             onClick={() => paginate(number)}
-                            className={`pagination-button ${number === currentPage ? 'active' : ''}`}>
+                            className={`pagination-button ${number === currentPage ? 'active' : ''}`}
+                        >
                             {number}
                         </button>
                     ))}
-                    <button onClick={handleNext}
+                    <button
+                        onClick={handleNext}
                         className="pagination-button"
-                        disabled={currentPage === pageNumbers.length}> Next &gt; </button>
+                        disabled={currentPage === pageNumbers.length}
+                    >
+                        Next &gt;
+                    </button>
                 </div>
             </div>
         </div>
