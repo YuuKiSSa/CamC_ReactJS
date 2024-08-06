@@ -7,6 +7,7 @@ const Favorite = () => {
     const [redirect, setRedirect] = useState(false);
     const [favorites, setFavorites] = useState([]);
     const [cameras, setCameras] = useState([]);
+    const [cameraList, setCameraList] = useState([]);
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -23,7 +24,14 @@ const Favorite = () => {
             }
         };
 
+        const fetchCameraList = async () => {
+            const response_list = await fetch(`http://localhost:8080/api/list`);
+            const data_list = await response_list.json();
+            setCameraList(data_list.cameras);
+        };
+
         fetchFavorites();
+        fetchCameraList();
     }, []);
 
     useEffect(() => {
@@ -35,7 +43,12 @@ const Favorite = () => {
                         throw new Error(`Failed to fetch camera with ID ${favorite.cameraId}`);
                     }
                     const data_camera = await response_camera.json();
-                    return { ...data_camera, idealPrice: favorite.idealPrice, id: favorite.cameraId};
+                    
+                    // Find the matching camera from the cameraList to get the latestPrice
+                    const matchedCamera = cameraList.find(camera => camera.id === favorite.cameraId);
+                    const latestPrice = matchedCamera ? matchedCamera.latestPrice : null;
+
+                    return { ...data_camera, idealPrice: favorite.idealPrice, id: favorite.cameraId, latestPrice };
                 });
                 const data_cameras = await Promise.all(response_cameras);
                 setCameras(data_cameras);
@@ -44,10 +57,10 @@ const Favorite = () => {
             }
         };
 
-        if (favorites.length > 0) {
+        if (favorites.length > 0 && cameraList.length > 0) {
             fetchCameras();
         }
-    }, [favorites]);
+    }, [favorites, cameraList]);
 
     const handleDelete = async (cameraId) => {
         const confirm_delete = window.confirm('Are you sure you want to unfavorite this item?');
@@ -69,12 +82,29 @@ const Favorite = () => {
         }
     };
 
+    const handleChangePrice = async (cameraId, currentIdealPrice) => {
+        const newIdealPrice = prompt(`Current Ideal Price: ¥${currentIdealPrice}\nEnter new Ideal Price:`);
+        if (newIdealPrice !== null && newIdealPrice !== "" && !isNaN(newIdealPrice)) {
+            try {
+                await handleDelete(cameraId); // 删除当前相机
+                await axios.post('http://localhost:8080/api/favorite/add', { cameraId, idealPrice: newIdealPrice }, { withCredentials: true });
+                setFavorites(prevFavorites => [...prevFavorites, { cameraId, idealPrice: newIdealPrice }]);
+            } catch (error) {
+                console.error('Failed to change ideal price:', error);
+                alert('Failed to change ideal price. Please try again later.');
+            }
+        } else {
+            alert('Please enter a valid price.');
+        }
+    };
+
     if (redirect) {
         return <Navigate to="/login" />;
     }
 
     return (
         <div>
+            <h1>Your Favorite Items</h1>
             {favorites.length === 0 ? (
                 <div>No favorited items yet.</div>
             ) : (
@@ -87,12 +117,15 @@ const Favorite = () => {
                                 </div>
                                 <div className="info">
                                     <h2>{camera.productName}</h2>                                    
-                                    <p>Lowest Price: ￥{camera.lowestPrice}</p>
+                                    <p>Latest Price: ¥{camera.latestPrice}</p>
                                     <p>Ideal Price: ¥{camera.idealPrice}</p>
                                 </div>
+                                {camera.latestPrice <= camera.idealPrice && (
+                                    <div className="alert">Get your camera in perfect price NOW!</div>
+                                )}
                             </Link>
-                            <button onClick={() => handleDelete(camera.id)}>Unfavorite</button>
-                            {/* <pre>{JSON.stringify(camera, null, 2)}</pre> */}
+                            <button className="change" onClick={() => handleChangePrice(camera.id, camera.idealPrice)}>Change Ideal Price</button>
+                            <button className="delete" onClick={() => handleDelete(camera.id)}>Unfavorite</button>
                         </div>
                     ))}
                 </div>

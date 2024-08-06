@@ -1,60 +1,88 @@
-/* Favorite.css */
-
 .camera-item {
     display: flex;
-    align-items: center; /* Vertically center items */
-    border-bottom: 1px solid #ddd; /* Horizontal line between items */
-    padding: 5px 10px; /* Padding around the item */
-    margin-bottom: 10px; /* Space between items */
-    justify-content: space-between; /* Ensure content is spaced between the link and button */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 5px; /* 减小 padding */
+    margin-bottom: 5px; /* 减小 margin-bottom */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    height: auto; /* 确保高度自动适应内容 */
+    position: relative; /* 使 alert 的绝对定位相对于 item 进行 */
 }
 
-.camera-item:last-child {
-    border-bottom: none; /* Remove bottom border for the last item */
+.camera-item .image {
+    flex: 1;
 }
 
-.camera-item link {
+.camera-item .info {
+    flex: 3; /* 增大 info 的 flex 值 */
+    margin-left: 10px; /* 减小 margin-left */
+    text-align: left; /* 添加文本左对齐 */
+}
+
+.camera-item .info h2 {
+    margin: 0;
+    font-size: 1em; /* 减小字体大小 */
+}
+
+.camera-item .info p {
+    margin: 3px 0; /* 减小 margin */
+    color: #555;
+    font-size: 0.9em; /* 减小字体大小 */
+}
+
+.camera-item .alert {
+    color: red;
+    position: absolute;
+    top: 37%;
+    right: 38%;
+}
+
+.camera-item .link {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1; /* 使链接占据剩余空间 */
+}
+
+.camera-item .camera-list-image-favorite {
+    width: 70px; /* 减小图片宽度 */
+    height: auto;
+    border-radius: 5px;
+}
+
+.camera-item .button-group {
     display: flex;
     align-items: center;
-    text-decoration: none;
-    color: inherit; /* Inherit color from parent */
-    flex: 1; /* Allow the link to take up available space */
-}
-
-.camera-item image {
-    margin-right: 10px; /* Space between image and info */
-}
-
-.camera-list-image-favorite {
-    width: 200px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.info {
-    flex: 1; /* Allow info to take up available space */
-}
-
-.info h2 {
-    margin: 0;
-    font-size: 1em; /* Adjust size as needed */
-}
-
-.info p {
-    margin: 2px 0; /* Reduced margin for a more compact design */
-    font-size: 0.9em; /* Adjust size as needed */
 }
 
 .camera-item button {
-    background-color: #f44; /* Red background */
-    color: #fff; /* White text */
+    padding: 5px 7px;
+    color: white;
     border: none;
-    padding: 5px 8px; /* Padding for the button */
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 0.8em; /* Adjust size as needed */
-    white-space: nowrap; /* Prevent text wrapping */
+    transition: background-color 0.3s;
+    font-size: 0.9em; /* 减小字体大小 */
+    margin-right: 5px; /* 添加右边距以分隔按钮 */
 }
 
-.camera-item button:hover {
-    background-color: #d33; /* Darker red on hover */
+.camera-item button.change {
+    background-color: #28a745; /* 绿色背景 */
+    padding: 5px 20px; /* 调整左右内边距以增加按钮宽度 */
+    white-space: nowrap; /* 防止文本换行 */
+}
+
+.camera-item button.change:hover {
+    background-color: #218838; /* 深绿色背景 */
+}
+
+.camera-item button.delete {
+    background-color: #dc3545; /* 红色背景 */
+}
+
+.camera-item button.delete:hover {
+    background-color: #c82333; /* 深红色背景 */
 }
