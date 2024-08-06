@@ -39,6 +39,9 @@ const CameraPrice = ({ cameraId }) => {
       <h2>Camera Prices</h2>
       {cameraData.map(platform => (
         <div key={platform.platform} className="price-row">
+          <div className="price-image">
+            <img src={`/${platform.platform}.png`} alt={`${platform.platform} logo`} />
+          </div>
           <div className={`price ${lowestPricePlatform === platform.platform ? 'lowest-price' : ''}`}>
             <span className="platform-name">{platform.platform}:</span>
             <span className="product-name">{platform.details[0].productName}</span>

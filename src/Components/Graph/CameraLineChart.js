@@ -46,7 +46,9 @@ const CameraLineChart = ({ cameraModel }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis />
-          <Tooltip />
+          <Tooltip
+            formatter={(value) => `${parseFloat(value).toFixed(2)}`} // 格式化为两位小数
+          />
           <Legend />
           <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>

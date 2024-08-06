@@ -63,22 +63,19 @@ const Favorite = () => {
     }, [favorites, cameraList]);
 
     const handleDelete = async (cameraId) => {
-        const confirm_delete = window.confirm('Are you sure you want to unfavorite this item?');
-        if (confirm_delete) {
-            try {
-                console.log('Sending delete request for cameraId:', cameraId);
-                const response = await axios.delete('http://localhost:8080/api/favorite/delete', {
-                    data: { cameraId },
-                    withCredentials: true
-                });
-                console.log('Delete response:', response.data);
-    
-                setFavorites(prevFavorites => prevFavorites.filter(favorite => favorite.cameraId !== cameraId));
-                setCameras(prevCameras => prevCameras.filter(camera => camera.id !== cameraId));
-            } catch (error) {
-                console.error('Failed to delete item:', error);
-                alert('Failed to delete item. Please try again later.');
-            }
+        try {
+            console.log('Sending delete request for cameraId:', cameraId);
+            const response = await axios.delete('http://localhost:8080/api/favorite/delete', {
+                data: { cameraId },
+                withCredentials: true
+            });
+            console.log('Delete response:', response.data);
+
+            setFavorites(prevFavorites => prevFavorites.filter(favorite => favorite.cameraId !== cameraId));
+            setCameras(prevCameras => prevCameras.filter(camera => camera.id !== cameraId));
+        } catch (error) {
+            console.error('Failed to delete item:', error);
+            alert('Failed to delete item. Please try again later.');
         }
     };
 
@@ -103,7 +100,7 @@ const Favorite = () => {
     }
 
     return (
-        <div>
+        <div className="favorite">
             <h1>Your Favorite Items</h1>
             {favorites.length === 0 ? (
                 <div>No favorited items yet.</div>

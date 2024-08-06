@@ -47,7 +47,6 @@ const CameraDetail = () => {
 
             if (response.status === 200) {
                 setIsFavorite(true);
-                alert('Added to favorites successfully!');
             } else {
                 alert('Failed to add to favorites.');
             }
@@ -63,6 +62,9 @@ const CameraDetail = () => {
 
     return (
         <div id='camera-detail'>
+            <button className="back-button" onClick={() => window.history.back()}>
+                &#9664; Back
+            </button>
             <div className="image">
                 <img src={camera.imageUrl} alt={camera.productName} className="camera-image"/>
             </div>
@@ -75,7 +77,7 @@ const CameraDetail = () => {
                         <span className="shic">Initial price<span className="prices2">￥{camera.initialPrice}</span></span>
                         <span className="yis">Average Rate: {camera.averageRate}</span>
                     </div>
-                    <h3>Predict trend:</h3>
+                    <h2>Predict Trend</h2>
                     <div className='predict-graph'>
                         <CameraLineChart />
                     </div>

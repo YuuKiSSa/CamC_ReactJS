@@ -2,20 +2,28 @@
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
+    box-sizing: border-box; /* 确保内边距和边框包含在总宽度中 */
 }
 
 #camera-detail .image {
-    flex: 1 1 450px;
+    flex: 1 1 450px; /* 设置最小宽度为450px */
     margin-right: 20px;
+    box-sizing: border-box;
 }
 
+.camera-detail h2 {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
 .camera-detail {
-    flex: 2 1 500px; 
+    flex: 2 1 500px;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .details {
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 .details .color {
@@ -25,6 +33,7 @@
 .details .details1 {
     background-color: #F2F5F8;
     color: #758188;
+    padding: 10px; /* 添加内边距以改善视觉效果 */
 }
 
 .details .details1 .prices,
@@ -48,12 +57,12 @@
 
 .predict-graph {
     margin-top: 10px;
-    width: 100%; 
-    box-sizing: border-box; 
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .details h3 {
-    text-align: left; 
+    text-align: left;
 }
 
 .favorite {
@@ -67,6 +76,8 @@
     height: 60px;
     border-radius: 30px;
     margin-left: 30px;
+    font-size: 20px; /* 调整字体大小 */
+    box-sizing: border-box; /* 确保内边距和边框包含在总宽度中 */
 }
 
 .favorite .favoritecolor {
@@ -79,8 +90,9 @@
 
 #top-buttons {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* 允许按钮换行 */
 }
 
 #top-buttons button {
@@ -93,6 +105,8 @@
     border: 1px #3f905f solid;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    box-sizing: border-box;
+    margin: 5px; /* 添加间距以避免按钮紧贴在一起 */
 }
 
 #top-buttons button:hover {
@@ -106,6 +120,7 @@
 #info {
     width: 100%;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .divider {
@@ -113,4 +128,56 @@
     height: 5px;
     width: 100%;
     margin: 20px 0;
+}
+
+/* 在 CameraDetail.css 中添加 */
+.back-button {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #camera-detail {
+        flex-direction: column; /* 在小屏幕上垂直排列 */
+    }
+
+    #camera-detail .image,
+    .camera-detail {
+        flex: 1 1 100%; /* 在小屏幕上占满整个宽度 */
+        margin-right: 0; /* 移除右侧间距 */
+    }
+
+    .favorite button {
+        width: 100%; /* 在小屏幕上按钮宽度占满容器 */
+        margin-left: 0;
+    }
+
+    #top-buttons button {
+        width: 100%; /* 在小屏幕上按钮宽度占满容器 */
+        margin: 5px 0; /* 添加上下间距 */
+    }
+}
+
+@media (max-width: 480px) {
+    .details .details1 .prices {
+        font-size: 28px; /* 调整价格字体大小以适应小屏幕 */
+    }
+
+    .favorite button {
+        height: 50px; /* 调整按钮高度 */
+        font-size: 18px; /* 调整字体大小 */
+    }
 }

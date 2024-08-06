@@ -1,88 +1,94 @@
-.camera-item {
+/* CSS 文件中的样式 */
+.favorite h1 {
+    text-align: left; /* 左对齐标题 */
+    margin: 0; /* 去除默认的外边距 */
+    margin-bottom: 40px;
+}
+
+.favorite .camera-item {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border: 1px solid #ddd;
-    padding: 5px; /* 减小 padding */
-    margin-bottom: 5px; /* 减小 margin-bottom */
+    padding: 5px;
+    margin-bottom: 5px;
     border-radius: 5px;
     background-color: #f9f9f9;
-    height: auto; /* 确保高度自动适应内容 */
-    position: relative; /* 使 alert 的绝对定位相对于 item 进行 */
+    height: auto;
+    position: relative;
 }
 
-.camera-item .image {
-    flex: 1;
+.favorite .camera-item .image {
+    flex: 0 0 70px; /* 固定图片宽度 */
+    margin-right: 10px; /* 添加右边距 */
 }
 
-.camera-item .info {
-    flex: 3; /* 增大 info 的 flex 值 */
-    margin-left: 10px; /* 减小 margin-left */
-    text-align: left; /* 添加文本左对齐 */
+.favorite .camera-item .image img {
+    width: 70px; /* 设置图片宽度 */
+    height: auto; /* 高度自适应 */
+    border-radius: 5px;
 }
 
-.camera-item .info h2 {
+.favorite .camera-item .info {
+    flex: 1; /* 占据剩余空间 */
+    text-align: left;
+}
+
+.favorite .camera-item .info h2 {
     margin: 0;
-    font-size: 1em; /* 减小字体大小 */
+    font-size: 1em;
 }
 
-.camera-item .info p {
-    margin: 3px 0; /* 减小 margin */
+.favorite .camera-item .info p {
+    margin: 3px 0;
     color: #555;
-    font-size: 0.9em; /* 减小字体大小 */
+    font-size: 0.9em;
 }
 
-.camera-item .alert {
+.favorite .camera-item .alert {
     color: red;
     position: absolute;
     top: 37%;
-    right: 38%;
+    right: 50%;
+    font-weight: bold;
 }
 
-.camera-item .link {
+.favorite .camera-item .link {
     display: flex;
     text-decoration: none;
     color: inherit;
     flex-grow: 1; /* 使链接占据剩余空间 */
 }
 
-.camera-item .camera-list-image-favorite {
-    width: 70px; /* 减小图片宽度 */
-    height: auto;
-    border-radius: 5px;
-}
-
-.camera-item .button-group {
+.favorite .camera-item .button-group {
     display: flex;
     align-items: center;
 }
 
-.camera-item button {
-    padding: 5px 7px;
+.favorite .camera-item button {
+    padding: 5px 10px; /* 调整内边距 */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 0.9em; /* 减小字体大小 */
-    margin-right: 5px; /* 添加右边距以分隔按钮 */
+    font-size: 0.9em;
+    margin-right: 5px; /* 按钮之间的间距 */
 }
 
-.camera-item button.change {
+.favorite .camera-item button.change {
     background-color: #28a745; /* 绿色背景 */
-    padding: 5px 20px; /* 调整左右内边距以增加按钮宽度 */
-    white-space: nowrap; /* 防止文本换行 */
 }
 
-.camera-item button.change:hover {
+.favorite .camera-item button.change:hover {
     background-color: #218838; /* 深绿色背景 */
 }
 
-.camera-item button.delete {
+.favorite .camera-item button.delete {
     background-color: #dc3545; /* 红色背景 */
 }
 
-.camera-item button.delete:hover {
+.favorite .camera-item button.delete:hover {
     background-color: #c82333; /* 深红色背景 */
 }
