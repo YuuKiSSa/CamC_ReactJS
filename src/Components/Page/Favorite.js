@@ -83,7 +83,7 @@ const Favorite = () => {
                         <div key={camera.id} className="camera-item">
                             <Link to={`/camera/${camera.id}`} className="link">
                                 <div className="image">
-                                    <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-list-image"/>
+                                    <img src={camera.imageUrl} alt={`${camera.brand} ${camera.model}`} className="camera-list-image-favorite"/>
                                 </div>
                                 <div className="info">
                                     <h2>{camera.productName}</h2>                                    

@@ -7,6 +7,8 @@ import Login from "./Components/Login";
 import './CSS/App.css';
 import Home from "./Components/Home";
 import CameraDetail from './Components/CameraDetail';
+import Favorites from "./Components/Page/Favorite";
+import SignUp from "./Components/SignUp";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
                       <Route path="/login" element={<Login />} />
                       <Route path="/gallery" element={<CameraList />} />
                       <Route path="/camera/:id" element={<CameraDetail />} />
+                      <Route path="/favorite" element={<Favorites />} />
+                      <Route path="/signup" element={<SignUp />} />
                   </Routes>
               </div>
               <Footer />

@@ -13,7 +13,7 @@
     border-bottom: none; /* Remove bottom border for the last item */
 }
 
-.link {
+.camera-item link {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -21,12 +21,12 @@
     flex: 1; /* Allow the link to take up available space */
 }
 
-.image {
+.camera-item image {
     margin-right: 10px; /* Space between image and info */
 }
 
-.camera-list-image {
-    width: 80px; /* Adjust size as needed */
+.camera-list-image-favorite {
+    width: 200px; /* Adjust size as needed */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -44,7 +44,7 @@
     font-size: 0.9em; /* Adjust size as needed */
 }
 
-button {
+.camera-item button {
     background-color: #f44; /* Red background */
     color: #fff; /* White text */
     border: none;
@@ -55,6 +55,6 @@ button {
     white-space: nowrap; /* Prevent text wrapping */
 }
 
-button:hover {
+.camera-item button:hover {
     background-color: #d33; /* Darker red on hover */
 }
