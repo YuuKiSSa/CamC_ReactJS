@@ -18,7 +18,7 @@
 
 .main-image-container {
     width: 100%; /* Full width of the parent .image container */
-    height: 70%; /* Adjust as needed, or use a specific pixel value if required */
+    height: 500px; /* Adjust as needed, or use a specific pixel value if required */
     overflow: hidden;
     position: relative;
     background-color: #ffffff;
