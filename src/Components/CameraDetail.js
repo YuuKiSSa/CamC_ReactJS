@@ -12,6 +12,7 @@ const CameraDetail = () => {
     const { id } = useParams();
     const [camera, setCamera] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
+    const [mainImageUrl, setMainImageUrl] = useState('');
 
     useEffect(() => {
         const fetchCamera = async () => {
@@ -19,6 +20,7 @@ const CameraDetail = () => {
                 const response = await fetch(`http://localhost:8080/api/main/${id}`);
                 const data = await response.json();
                 setCamera(data);
+                setMainImageUrl(data.imageUrls[0]); // Set the first image as the main image
             } catch (error) {
                 console.error('Failed to fetch camera data:', error);
             }
@@ -69,17 +71,31 @@ const CameraDetail = () => {
         return stars;
     };
 
+    const handleThumbnailClick = (url) => {
+        setMainImageUrl(url);
+    };
+
     if (!camera) {
         return <div>Loading...</div>; // or you could use a spinner/loading component
     }
 
     return (
         <div id='camera-detail'>
-            <button className="back-button" onClick={() => window.history.back()}>
-                &#9664; Back
-            </button>
             <div className="image">
-                <img src={camera.imageUrl} alt={camera.productName} className="camera-image"/>
+                <div className="main-image-container">
+                    <img src={mainImageUrl} alt={camera.productName} className="camera-image"/>
+                </div>
+                <div className="thumbnails">
+                    {camera.imageUrls.map((url, index) => (
+                        <img
+                            key={index}
+                            src={url}
+                            alt={`Thumbnail ${index}`}
+                            className="thumbnail"
+                            onClick={() => handleThumbnailClick(url)}
+                        />
+                    ))}
+                </div>
             </div>
             <div className="camera-detail">
                 <h1>{camera.productName}</h1>
@@ -98,6 +114,9 @@ const CameraDetail = () => {
                         <button onClick={handleAddToFavorite}>
                             {isFavorite ? 'Added to Favorite' : 'Add to Favorite'}
                         </button>
+                        <button className="back-button" onClick={() => window.history.back()}>
+                            &#9664; Back
+                        </button>
                     </div>
                 </div>
             </div>
@@ -107,6 +126,7 @@ const CameraDetail = () => {
                 <button onClick={() => scrollToSection('history-graph')}>Price History</button>
                 <button onClick={() => scrollToSection('info')}>Camera Details</button>
             </div>
+            <div className='part'>
             <div className="divider"></div>
             <div id="compare">
                 <CameraPrice />
@@ -122,6 +142,7 @@ const CameraDetail = () => {
             <div className="divider"></div>
             <div id="info">
                 <CameraInfo />
+            </div>
             </div>
         </div>
     );
