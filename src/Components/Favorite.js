@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
-import "../../CSS/Favorite.css";
+import "../CSS/Favorite.css";
 import axios from "axios";
 
 const Favorite = () => {
@@ -103,7 +103,7 @@ const Favorite = () => {
         <div className="favorite">
             <h1>Your Favorite Items</h1>
             {favorites.length === 0 ? (
-                <div>No favorited items yet.</div>
+                <div className="noFavorite">No favorited items yet.</div>
             ) : (
                 <div>
                     {cameras.map((camera) => (

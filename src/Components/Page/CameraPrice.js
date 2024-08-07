@@ -47,7 +47,7 @@ const CameraPrice = ({ cameraId }) => {
             <span className="product-name">{platform.details[0].productName}</span>
             <span className="product-price">${platform.details[0].price}</span>
             <a href={platform.details[0].link} target="_blank" rel="noopener noreferrer">
-              <button>View in Shop</button>
+              <button className="view-button">View in Shop</button>
             </a>
           </div>
         </div>

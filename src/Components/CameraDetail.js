@@ -14,20 +14,43 @@ const CameraDetail = () => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [mainImageUrl, setMainImageUrl] = useState('');
 
-    useEffect(() => {
-        const fetchCamera = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/api/main/${id}`);
-                const data = await response.json();
-                setCamera(data);
-                setMainImageUrl(data.imageUrls[0]); // Set the first image as the main image
-            } catch (error) {
-                console.error('Failed to fetch camera data:', error);
-            }
-        };
+    // Function to fetch camera details
+    const fetchCamera = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/main/${id}`);
+            if (!response.ok) throw new Error('Failed to fetch camera data');
+            const data = await response.json();
+            setCamera(data);
+            setMainImageUrl(data.imageUrls[0]); // Set the first image as the main image
+        } catch (error) {
+            console.error('Failed to fetch camera data:', error);
+        }
+    };
 
+    // Function to fetch user's favorite cameras
+    const fetchFavorites = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/favorite', { credentials: 'include' });
+            if (response.status === 401) {
+                return; // Handle unauthorized status if necessary
+            }
+            const data = await response.json();
+            const favoriteIds = data.map(favorite => favorite.cameraId);
+            setIsFavorite(favoriteIds.includes(id));
+        } catch (error) {
+            console.error('Failed to fetch favorites:', error);
+        }
+    };
+
+    useEffect(() => {
         fetchCamera();
     }, [id]);
+
+    useEffect(() => {
+        if (camera) {
+            fetchFavorites();
+        }
+    }, [camera]);
 
     const handleAddToFavorite = async () => {
         if (!camera) return;
@@ -48,7 +71,8 @@ const CameraDetail = () => {
             });
 
             if (response.status === 200) {
-                setIsFavorite(true);
+                setIsFavorite(true); // Set as favorite upon successful addition
+                await fetchFavorites(); // Fetch updated favorites to ensure synchronization
             } else {
                 alert('Failed to add to favorites.');
             }
@@ -111,7 +135,7 @@ const CameraDetail = () => {
                         <CameraLineChart />
                     </div>
                     <div className="favorite">
-                        <button onClick={handleAddToFavorite}>
+                        <button className="back-button" onClick={handleAddToFavorite}>
                             {isFavorite ? 'Added to Favorite' : 'Add to Favorite'}
                         </button>
                         <button className="back-button" onClick={() => window.history.back()}>
@@ -127,22 +151,22 @@ const CameraDetail = () => {
                 <button onClick={() => scrollToSection('info')}>Camera Details</button>
             </div>
             <div className='part'>
-            <div className="divider"></div>
-            <div id="compare">
-                <CameraPrice />
-            </div>
-            <div className="divider"></div>
-            <div id="review">
-                <UserReviews />
-            </div>
-            <div className="divider"></div>
-            <div id="history-graph">
-                <PriceHistoryChart />
-            </div>
-            <div className="divider"></div>
-            <div id="info">
-                <CameraInfo />
-            </div>
+                <div className="divider"></div>
+                <div id="compare">
+                    <CameraPrice />
+                </div>
+                <div className="divider"></div>
+                <div id="review">
+                    <UserReviews />
+                </div>
+                <div className="divider"></div>
+                <div id="history-graph">
+                    <PriceHistoryChart />
+                </div>
+                <div className="divider"></div>
+                <div id="info">
+                    <CameraInfo />
+                </div>
             </div>
         </div>
     );

@@ -53,6 +53,12 @@
   flex: 0.2; 
 }
 
+.view-button {
+  height: 50px;
+  width: 130px;
+  font-size: 18px;
+}
+
 .camera-price-container button {
   flex: 0.2; 
   margin-left: 10px;

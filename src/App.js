@@ -7,7 +7,7 @@ import Login from "./Components/Login";
 import './CSS/App.css';
 import Home from "./Components/Home";
 import CameraDetail from './Components/CameraDetail';
-import Favorites from "./Components/Page/Favorite";
+import Favorites from "./Components/Favorite";
 import SignUp from "./Components/SignUp";
 import ContactPage from './Components/ContactPage';
 
