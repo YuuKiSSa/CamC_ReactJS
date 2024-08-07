@@ -9,6 +9,7 @@ import Home from "./Components/Home";
 import CameraDetail from './Components/CameraDetail';
 import Favorites from "./Components/Page/Favorite";
 import SignUp from "./Components/SignUp";
+import ContactPage from './Components/ContactPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                       <Route path="/camera/:id" element={<CameraDetail />} />
                       <Route path="/favorite" element={<Favorites />} />
                       <Route path="/signup" element={<SignUp />} />
+                      <Route path="/contact" element={<ContactPage />} />
                   </Routes>
               </div>
               <Footer />
