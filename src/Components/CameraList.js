@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import SearchBar from './Gallery/SearchBar';
 import FilterBar from "./Gallery/FilterBar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTag } from '@fortawesome/free-solid-svg-icons';
+import {faStar, faTag} from '@fortawesome/free-solid-svg-icons';
 
 const PAGE_SIZE = 9;
 
@@ -17,6 +17,10 @@ const CameraList = () => {
         priceRange:''
     });
     const [cameras_like, setCamerasLike] = useState([]);
+    const [sort, setSort] = useState({
+        field: '',
+        order: 'asc'
+    });
 
     useEffect(() => {
         const fetchCameras = async () => {
@@ -47,8 +51,31 @@ const CameraList = () => {
         (filters.priceRange.max === undefined || camera.latestPrice <= filters.priceRange.max)
     );
 
+    const handleSortChange = (field) => {
+        setSort((prevSort) => {
+            const newOrder = prevSort.field === field && prevSort.order === 'asc' ? 'desc' : 'asc';
+            return { field, order: newOrder };
+        });
+    };
 
-    const currentCameras = filteredCameras.slice(indexOfFirstCamera, indexOfLastCamera);
+    const sortCameras = (cameras) => {
+        const sortedCameras = [...cameras];
+        if (sort.field) {
+            sortedCameras.sort((a, b) => {
+                if (a[sort.field] < b[sort.field]) {
+                    return sort.order === 'asc' ? -1 : 1;
+                }
+                if (a[sort.field] > b[sort.field]) {
+                    return sort.order === 'asc' ? 1 : -1;
+                }
+                return 0;
+            });
+        }
+        return sortedCameras;
+    };
+
+    const sortedCameras = sortCameras(filteredCameras);
+    const currentCameras = sortedCameras.slice(indexOfFirstCamera, indexOfLastCamera);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -69,9 +96,23 @@ const CameraList = () => {
         pageNumbers.push(i);
     }
 
+    const renderStars = (rate) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <FontAwesomeIcon
+                    key={i}
+                    icon={faStar}
+                    className={`star-icon ${i <= rate ? 'filled' : ''}`}
+                />
+            );
+        }
+        return stars;
+    };
+
     return (
         <div className="camera-list-container">
-            <FilterBar filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage} />
+            <FilterBar filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage} sort={sort} setSort={setSort} />
             <div className="camera-list-content">
                 {cameras_like.length > 0 ? (
                     <div>
@@ -93,11 +134,15 @@ const CameraList = () => {
                                             )}
                                             {discountPercentage > 0 && (
                                                 <div className="discount-badge">
-                                                    <FontAwesomeIcon icon={faTag} className="discount-icon" />
+                                                    <FontAwesomeIcon icon={faTag} className="discount-icon"/>
                                                     {discountPercentage} % OFF
                                                 </div>
                                             )}
                                             <h2>{camera.brand} {camera.model}</h2>
+                                            <div className="rate">
+                                                <p>Average Rate
+                                                    ({camera.averageRate}): {renderStars(camera.averageRate)}</p>
+                                            </div>
                                             <div className="camera-list-price">
                                                 <p className="initial-price">￥{camera.initialPrice}</p>
                                                 <p className="latest-price">￥{camera.latestPrice}</p>
@@ -112,7 +157,7 @@ const CameraList = () => {
                     <div></div>
                 )}
                 <h1>Camera List</h1>
-                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCurrentPage={setCurrentPage} />
+                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCurrentPage={setCurrentPage}/>
                 <div className="camera-grid">
                     {currentCameras.map((camera) => {
                         const discountPercentage = (
@@ -130,11 +175,14 @@ const CameraList = () => {
                                     )}
                                     {discountPercentage > 0 && (
                                         <div className="discount-badge">
-                                            <FontAwesomeIcon icon={faTag} className="discount-icon" />
+                                            <FontAwesomeIcon icon={faTag} className="discount-icon"/>
                                             {discountPercentage} % OFF
                                         </div>
                                     )}
                                     <h2>{camera.brand} {camera.model}</h2>
+                                    <div className="rate">
+                                        <p>Average Rate ({camera.averageRate}): {renderStars(camera.averageRate)}</p>
+                                    </div>
                                     <div className="camera-list-price">
                                         <p className="initial-price">￥{camera.initialPrice}</p>
                                         <p className="latest-price">￥{camera.latestPrice}</p>

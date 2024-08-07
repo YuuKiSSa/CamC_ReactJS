@@ -102,7 +102,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: -10px;
     font-size: 20px;
 }
 
@@ -127,4 +127,12 @@
     border-radius: 5px;
     font-size: 1em;
     font-weight: bold;
+}
+
+.star-icon {
+    color: #ccc;
+}
+
+.star-icon.filled {
+    color: #f39c12;
 }

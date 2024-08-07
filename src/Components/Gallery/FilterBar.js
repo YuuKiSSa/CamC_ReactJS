@@ -2,7 +2,7 @@
 import React from 'react';
 import "../../CSS/Filter.css"
 
-const FilterBar = ({ filters, setFilters, setCurrentPage }) => {
+const FilterBar = ({ filters, setFilters, setCurrentPage, sort, setSort }) => {
     const handleBrandChange = (brand) => {
         setFilters({ ...filters, brand });
         setCurrentPage(1);
@@ -11,6 +11,13 @@ const FilterBar = ({ filters, setFilters, setCurrentPage }) => {
     const handlePriceRangeChange = (field, value) => {
         setFilters({ ...filters, priceRange: { ...filters.priceRange, [field]: value } });
         setCurrentPage(1);
+    };
+
+    const handleSortChange = (field) => {
+        setSort((prevSort) => {
+            const newOrder = prevSort.field === field && prevSort.order === 'asc' ? 'desc' : 'asc';
+            return { field, order: newOrder };
+        });
     };
 
     return (
@@ -55,6 +62,23 @@ const FilterBar = ({ filters, setFilters, setCurrentPage }) => {
                         value={filters.priceRange.max || ''}
                         onChange={e => handlePriceRangeChange('max', e.target.value)}
                     />
+                </div>
+            </div>
+            <div className="filter-group">
+                <h3>Sort By</h3>
+                <div className="sort-buttons">
+                    <button
+                        className={`sort-button ${sort.field === 'latestPrice' ? 'active' : ''}`}
+                        onClick={() => handleSortChange('latestPrice')}
+                    >
+                        Price {sort.field === 'latestPrice' && (sort.order === 'asc' ? '▲' : '▼')}
+                    </button>
+                    <button
+                        className={`sort-button ${sort.field === 'averageRate' ? 'active' : ''}`}
+                        onClick={() => handleSortChange('averageRate')}
+                    >
+                        Rating {sort.field === 'averageRate' && (sort.order === 'asc' ? '▲' : '▼')}
+                    </button>
                 </div>
             </div>
         </div>

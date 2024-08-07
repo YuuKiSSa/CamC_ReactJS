@@ -74,3 +74,24 @@
 .sign-up-link a:hover {
     text-decoration: underline;
 }
+
+.sort-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-button {
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.sort-button.active,
+.sort-button:hover{
+    background-color: #397D54;
+    color: white;
+    font-weight: bold;
+}
