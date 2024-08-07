@@ -33,7 +33,7 @@
 .details .details1 {
     background-color: #F2F5F8;
     color: #758188;
-    padding: 10px; /* 添加内边距以改善视觉效果 */
+    padding: 10px; 
 }
 
 .details .details1 .prices,
@@ -76,7 +76,7 @@
     height: 60px;
     border-radius: 30px;
     margin-left: 30px;
-    font-size: 20px; /* 调整字体大小 */
+    font-size: 20px; 
     box-sizing: border-box; /* 确保内边距和边框包含在总宽度中 */
 }
 
@@ -135,7 +135,7 @@
     position: absolute;
     top: 80px;
     left: 20px;
-    background-color: #007bff;
+    background-color: #73C088;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -145,8 +145,26 @@
 }
 
 .back-button:hover {
-    background-color: #0056b3;
+    background-color: #397D54;
 }
+
+.yis {
+    display: flex;
+    align-items: center;
+
+    
+    gap: 5px;
+}
+
+.fas.fa-star {
+    color: #ccc;
+    margin-right: 2px;
+}
+
+.fas.fa-star.filled {
+    color: rgb(255, 217, 0);
+}
+
 
 /* 响应式设计 */
 @media (max-width: 768px) {

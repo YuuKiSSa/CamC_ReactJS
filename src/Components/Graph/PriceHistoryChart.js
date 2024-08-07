@@ -84,7 +84,7 @@ const PriceHistoryChart = () => {
       tooltip: {
         callbacks: {
           label: function (context) {
-            return `${context.dataset.label}: ${context.raw.y} USD`;
+            return `${context.dataset.label}: ${context.raw.y} CNY`;
           }
         }
       }
@@ -103,7 +103,7 @@ const PriceHistoryChart = () => {
       y: {
         title: {
           display: true,
-          text: 'Price (USD)'
+          text: 'Price (CNY)'
         }
       }
     }

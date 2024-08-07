@@ -32,55 +32,67 @@ const CameraInfo = () => {
 
   return (
     <div className="camera-details">
-      <h2>Camera Details</h2>
-      <div className="detail-item">
-        <span className="detail-label">Brand:</span> {brand}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Model:</span> {model}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Category:</span> {category}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Description:</span> {description || 'N/A'}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Release Time:</span> {releaseTime}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Initial Price:</span> ${initialPrice ? initialPrice.toFixed(2) : 'N/A'}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Effective Pixel:</span> {effectivePixel} MP
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Focus Point:</span> {focusPoint}
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Continuous Shot:</span> {continuousShot} fps
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Video Resolution:</span> {videoResolution} K
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">Video Rate:</span> {videoRate} fps
-      </div>
-      <div className="separator" />
-      <div className="detail-item">
-        <span className="detail-label">ISO:</span> {iso}
-      </div>
-    </div>
+  <h2>Camera Details</h2>
+  <div className="detail-item">
+    <span className="detail-label">Brand:</span>
+    <span className="detail-value">{brand}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Model:</span>
+    <span className="detail-value">{model}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Category:</span>
+    <span className="detail-value">{category}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Description:</span>
+    <span className="detail-value">{description || 'N/A'}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Release Time:</span>
+    <span className="detail-value">{releaseTime}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Initial Price:</span>
+    <span className="detail-value">${initialPrice ? initialPrice.toFixed(2) : 'N/A'}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Effective Pixel:</span>
+    <span className="detail-value">{effectivePixel} MP</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Focus Point:</span>
+    <span className="detail-value">{focusPoint}</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Continuous Shot:</span>
+    <span className="detail-value">{continuousShot} fps</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Video Resolution:</span>
+    <span className="detail-value">{videoResolution} K</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">Video Rate:</span>
+    <span className="detail-value">{videoRate} fps</span>
+  </div>
+  <div className="separator" />
+  <div className="detail-item">
+    <span className="detail-label">ISO:</span>
+    <span className="detail-value">{iso}</span>
+  </div>
+</div>
   );
 };
 

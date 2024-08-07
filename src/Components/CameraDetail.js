@@ -56,6 +56,19 @@ const CameraDetail = () => {
         }
     };
 
+    const renderStars = (rate) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <i
+                    key={i}
+                    className={`fas fa-star ${i <= rate ? 'filled' : ''}`}
+                ></i>
+            );
+        }
+        return stars;
+    };
+
     if (!camera) {
         return <div>Loading...</div>; // or you could use a spinner/loading component
     }
@@ -75,7 +88,7 @@ const CameraDetail = () => {
                         <span className="color">Price</span>
                         <span className="prices">￥{camera.lowestPrice}</span>
                         <span className="shic">Initial price<span className="prices2">￥{camera.initialPrice}</span></span>
-                        <span className="yis">Average Rate: {camera.averageRate}</span>
+                        <span className="yis">Average Rate（{camera.averageRate}）：{renderStars(camera.averageRate)}</span>
                     </div>
                     <h2>Predict Trend</h2>
                     <div className='predict-graph'>
