@@ -88,7 +88,7 @@ const CameraDetail = () => {
                         <span className="color">Price</span>
                         <span className="prices">￥{camera.lowestPrice}</span>
                         <span className="shic">Initial price<span className="prices2">￥{camera.initialPrice}</span></span>
-                        <span className="yis">Average Rate（{camera.averageRate}）：{renderStars(camera.averageRate)}</span>
+                        <span className="yis">Average Rate({camera.averageRate})：{renderStars(camera.averageRate)}</span>
                     </div>
                     <h2>Predict Trend</h2>
                     <div className='predict-graph'>
