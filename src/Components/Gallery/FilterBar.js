@@ -1,4 +1,3 @@
-// components/FilterBar.js
 import React from 'react';
 import "../../CSS/Filter.css"
 
@@ -9,7 +8,7 @@ const FilterBar = ({ filters, setFilters, setCurrentPage, sort, setSort }) => {
     };
 
     const handlePriceRangeChange = (field, value) => {
-        setFilters({ ...filters, priceRange: { ...filters.priceRange, [field]: value } });
+        setFilters({ ...filters, priceRange: { ...filters.priceRange, [field]: value === '' ? undefined : value } });
         setCurrentPage(1);
     };
 
@@ -56,6 +55,7 @@ const FilterBar = ({ filters, setFilters, setCurrentPage, sort, setSort }) => {
                         value={filters.priceRange.min || ''}
                         onChange={e => handlePriceRangeChange('min', e.target.value)}
                     />
+                    _
                     <input
                         type="number"
                         placeholder="Max Price"
