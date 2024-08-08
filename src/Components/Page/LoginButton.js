@@ -9,7 +9,7 @@ function LoginButton() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch('http://13.229.204.191:8080/api/current-user', { credentials: 'include' });
+                const response = await fetch('http://localhost:8080/api/current-user', { credentials: 'include' });
                 const data = await response.json();
                 setUser(data.username);
             } catch (error) {
@@ -23,7 +23,7 @@ function LoginButton() {
         const confirm_logout = window.confirm('Are you sure you want to logout?');
         if (confirm_logout) {
             try {
-                const response = await axios.post('http://13.229.204.191:8080/api/logout', null, { withCredentials: true });
+                const response = await axios.post('http://localhost:8080/api/logout', null, { withCredentials: true });
                 console.log(response);
                 setUser(null);
             } catch (error) {

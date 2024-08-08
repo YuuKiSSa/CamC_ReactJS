@@ -21,23 +21,36 @@ const CameraList = () => {
         field: '',
         order: 'asc'
     });
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchCameras = async () => {
-            const response_list = await fetch(`http://localhost:8080/api/list`);
-            const data_list = await response_list.json();
-            setCameras(data_list.cameras);
-        };
-        const fetchCamerasLike = async () => {
-            const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
-            if (response_like.status !== 401) {
-                const data_like = await response_like.json();
-                setCamerasLike(data_like);
+            setLoading(true); // 数据加载开始，显示 Loading
+            try {
+                const responseList = await fetch('http://localhost:8080/api/list');
+                const dataList = await responseList.json();
+                setCameras(dataList.cameras);
+            } catch (error) {
+                console.error("Failed to fetch camera list", error);
+            } finally {
+                setLoading(false); // 数据加载完成，隐藏 Loading
             }
-        }
-        fetchCameras();
+        };
 
-        fetchCamerasLike()
+        const fetchCamerasLike = async () => {
+            try {
+                const responseLike = await fetch('http://localhost:8080/api/you-may-like', { credentials: 'include' });
+                if (responseLike.status !== 401) {
+                    const dataLike = await responseLike.json();
+                    setCamerasLike(dataLike);
+                }
+            } catch (error) {
+                console.error("Failed to fetch cameras you may like", error);
+            }
+        };
+
+        fetchCameras();
+        fetchCamerasLike();
     }, []);
 
     const indexOfLastCamera = currentPage * PAGE_SIZE;
@@ -50,13 +63,6 @@ const CameraList = () => {
         (filters.priceRange.min === undefined || camera.latestPrice >= filters.priceRange.min) &&
         (filters.priceRange.max === undefined || camera.latestPrice <= filters.priceRange.max)
     );
-
-    const handleSortChange = (field) => {
-        setSort((prevSort) => {
-            const newOrder = prevSort.field === field && prevSort.order === 'asc' ? 'desc' : 'asc';
-            return { field, order: newOrder };
-        });
-    };
 
     const sortCameras = (cameras) => {
         const sortedCameras = [...cameras];
@@ -109,6 +115,10 @@ const CameraList = () => {
         }
         return stars;
     };
+
+    if (loading) {
+        return <div className="loading">Loading...</div>;
+    }
 
     return (
         <div className="camera-list-container">

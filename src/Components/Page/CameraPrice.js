@@ -11,7 +11,7 @@ const CameraPrice = ({ cameraId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://13.229.204.191:8080/api/price/${id}`);
+        const response = await axios.get(`http://localhost:8080/api/price/${id}`);
         setCameraData(response.data);
 
         const prices = response.data.map(platform => ({
