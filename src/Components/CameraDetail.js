@@ -17,7 +17,7 @@ const CameraDetail = () => {
     // Function to fetch camera details
     const fetchCamera = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/main/${id}`);
+            const response = await fetch(`http://13.229.204.191:8080/api/main/${id}`);
             if (!response.ok) throw new Error('Failed to fetch camera data');
             const data = await response.json();
             setCamera(data);
@@ -30,7 +30,7 @@ const CameraDetail = () => {
     // Function to fetch user's favorite cameras
     const fetchFavorites = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/favorite', { credentials: 'include' });
+            const response = await fetch('http://13.229.204.191:8080/api/favorite', { credentials: 'include' });
             if (response.status === 401) {
                 return; // Handle unauthorized status if necessary
             }
@@ -63,7 +63,7 @@ const CameraDetail = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/api/favorite/add', {
+            const response = await axios.post('http://13.229.204.191:8080/api/favorite/add', {
                 cameraId: id,
                 idealPrice: parseFloat(idealPrice)
             }, {

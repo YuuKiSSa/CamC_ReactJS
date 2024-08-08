@@ -26,7 +26,7 @@ const PriceHistoryChart = () => {
   useEffect(() => {
     let isSubscribed = true;
 
-    fetch(`http://localhost:8080/api/history/${id}`)
+    fetch(`http://13.229.204.191:8080/api/history/${id}`)
       .then(response => response.json())
       .then(data => {
         if (!isSubscribed) return;

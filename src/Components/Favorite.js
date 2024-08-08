@@ -12,7 +12,7 @@ const Favorite = () => {
     useEffect(() => {
         const fetchFavorites = async () => {
             try {
-                const response_favorites = await fetch(`http://localhost:8080/api/favorite`, { credentials: 'include' });
+                const response_favorites = await fetch(`http://13.229.204.191:8080/api/favorite`, { credentials: 'include' });
                 if (response_favorites.status === 401) {
                     setRedirect(true);
                 } else {
@@ -25,7 +25,7 @@ const Favorite = () => {
         };
 
         const fetchCameraList = async () => {
-            const response_list = await fetch(`http://localhost:8080/api/list`);
+            const response_list = await fetch(`http://13.229.204.191/api/list`);
             const data_list = await response_list.json();
             setCameraList(data_list.cameras);
         };
@@ -38,7 +38,7 @@ const Favorite = () => {
         const fetchCameras = async () => {
             try {
                 const response_cameras = favorites.map(async (favorite) => {
-                    const response_camera = await fetch(`http://localhost:8080/api/main/${favorite.cameraId}`);
+                    const response_camera = await fetch(`http://13.229.204.191:8080/api/main/${favorite.cameraId}`);
                     if (!response_camera.ok) {
                         throw new Error(`Failed to fetch camera with ID ${favorite.cameraId}`);
                     }
@@ -65,7 +65,7 @@ const Favorite = () => {
     const handleDelete = async (cameraId) => {
         try {
             console.log('Sending delete request for cameraId:', cameraId);
-            const response = await axios.delete('http://localhost:8080/api/favorite/delete', {
+            const response = await axios.delete('http://13.229.204.191:8080/api/favorite/delete', {
                 data: { cameraId },
                 withCredentials: true
             });
@@ -84,7 +84,7 @@ const Favorite = () => {
         if (newIdealPrice !== null && newIdealPrice !== "" && !isNaN(newIdealPrice)) {
             try {
                 await handleDelete(cameraId); // 删除当前相机
-                await axios.post('http://localhost:8080/api/favorite/add', { cameraId, idealPrice: newIdealPrice }, { withCredentials: true });
+                await axios.post('http://13.229.204.191:8080/api/favorite/add', { cameraId, idealPrice: newIdealPrice }, { withCredentials: true });
                 setFavorites(prevFavorites => [...prevFavorites, { cameraId, idealPrice: newIdealPrice }]);
             } catch (error) {
                 console.error('Failed to change ideal price:', error);
