@@ -1,0 +1,185 @@
+/* Existing CSS */
+#camera-detail {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#camera-detail .image {
+    flex: 1 1 450px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column; /* Ensure children are stacked vertically */
+}
+
+.main-image-container {
+    width: 100%; /* Full width of the parent .image container */
+    height: 500px; /* Adjust as needed, or use a specific pixel value if required */
+    overflow: hidden;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.camera-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image fits within the container */
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s;
+    object-fit: contain;
+}
+
+.thumbnail:hover {
+    border: 2px solid #73C088;
+}
+
+.camera-detail {
+    flex: 2 1 500px;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.details .color {
+    color: #758188;
+}
+
+.details .details1 {
+    background-color: #F2F5F8;
+    color: #758188;
+    padding: 10px;
+}
+
+.details .details1 .prices,
+.shic {
+    margin-left: 20px;
+}
+
+.details .details1 .prices {
+    color: #FF4F0D;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.details .details1 .prices2 {
+    text-decoration: line-through;
+}
+
+.details .details1 .yis {
+    margin-left: 20px;
+}
+
+.predict-graph {
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.details h3 {
+    text-align: left;
+}
+
+.favorite {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.favorite button {
+    display: inline-block;
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+    margin-left: 30px;
+    font-size: 20px;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.back-button {
+    display: inline-block;
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-color: #73C088;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 10px;
+}
+
+.back-button:hover {
+    background-color: #397D54;
+}
+
+#top-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#top-buttons button {
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: #73C088;
+    color: #ffffff;
+    border: 1px #3f905f solid;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 5px;
+}
+
+#top-buttons button:hover {
+    background-color: #397D54;
+    color: #ffffff;
+}
+
+.divider {
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+.part {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* New CSS for stars */
+.fas.fa-star {
+    font-size: 20px; /* Adjust the size as needed */
+    color: #ddd; /* Default color for unfilled stars */
+}
+
+.fas.fa-star.filled {
+    color: #FFD700; /* Yellow color for filled stars */
+}

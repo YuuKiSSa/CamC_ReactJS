@@ -1,0 +1,90 @@
+/* NavBar.css */
+.navbar {
+    background-color: #CBEAD1;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+.logo-cam {
+    color: #397D54;
+}
+
+.logo-c {
+    color: #000000;
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    margin: 0 15px;
+}
+
+.nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #397D54;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.auth-buttons h2 {
+    margin: 0 10px;
+}
+
+.auth-buttons a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-buttons a:hover {
+    color: #397D54;
+}
+
+.sign-up-button {
+    width: 150px;
+    border: 2px solid #397D54;
+    background-color: #ffffff;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.sign-up-button:hover {
+    background-color: #397D54;
+}
+
+.sign-up-button a:hover {
+    color: #ffffff;
+}

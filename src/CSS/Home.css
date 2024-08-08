@@ -1,0 +1,180 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.main-content {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 130px;
+}
+
+.intro-section {
+    margin-bottom: 40px;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.intro-section h1 {
+    font-size: 4em;
+    color: #333;
+    line-height: 0.5;
+    margin-bottom: 0;
+}
+
+.intro-section p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.header{
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.browse-button, .demo-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.browse-button:focus,
+.browse-button:active {
+    outline: none;
+    background-color: #235D3A;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.browse-button {
+    background-color: #397D54;
+    color: #ffffff;
+}
+
+.browse-button:hover {
+    background-color: #235D3A;
+    color: #ffffff;
+}
+
+.demo-button {
+    background-color: #ffffff;
+    color: #007B55;
+    border: 2px solid #007B55;
+}
+
+.demo-button:hover {
+    background-color: #007B55;
+    color: #ffffff;
+}
+
+.highlight-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 0;
+    margin-left: 70px;
+}
+
+.highlight-image {
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.word-find{
+    color: #397D54;
+}
+
+.word-camera {
+    color: #397D54;
+}
+
+.button-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.button-info h2{
+    font-size: 1.8em;
+}
+
+.camc-info{
+    text-align: left;
+    margin-right: 140px;
+}
+
+.camc-info-text{
+    font-size: 18px;
+}
+
+.camc-info-title{
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.about{
+    margin-right: 140px;
+    text-align: left;
+}
+
+.privacy{
+    margin-right: 175px;
+    text-align: left;
+}
+
+.about p{
+    font-size: 18px;
+}
+
+.privacy p{
+    font-size: 18px;
+}
+
+.contact{
+    text-align: left;
+}
+
+.contact p{
+    font-size: 18px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.social-media a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #397D54;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-media a:hover {
+    background-color: #235D3A;
+    color: #ffffff;
+}

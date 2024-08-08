@@ -1,0 +1,76 @@
+.user-reviews-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.user-reviews-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: left; 
+}
+
+.review-row {
+  display: flex;
+  align-items: flex-start;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.review-content {
+  flex: 1;
+}
+
+.review-username {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.review-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.review-comment {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l2.5 7.5h8l-6.5 5 2.5 7.5-6.5-5-6.5 5 2.5-7.5-6.5-5h8z" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+  background-size: contain;
+  margin-right: 2px;
+}
+
+.star.filled {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l2.5 7.5h8l-6.5 5 2.5 7.5-6.5-5-6.5 5 2.5-7.5-6.5-5h8z" fill="%23FFD700" stroke="none"/></svg>') no-repeat center;
+}
+
+.review-date {
+  font-size: 0.8em;
+  color: #888;
+  display: block;
+  margin-top: 5px;
+}

@@ -1,0 +1,138 @@
+.camera-list-container {
+    display: flex;
+}
+
+.camera-list-content {
+    flex: 1;
+    padding: 20px;
+}
+.camera-list-content h1{
+    text-align: left;
+    color: #235D3A;
+}
+
+.search-bar {
+    margin: 20px 0;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.camera-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.camera-item-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.camera-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.camera-item h2{
+    margin-bottom: -10px;
+}
+
+.camera-item:hover {
+    transform: translateY(-5px);
+}
+
+.camera-image-container {
+    width: 100%;
+    height: 200px;
+    display: fill;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.camera-list-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    background-color:#73C088;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-button:disabled {
+    background-color: #C8EAD1;
+    cursor: not-allowed;
+}
+
+.pagination-button.active {
+    background-color: #197D54;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background-color: #197D54;
+}
+
+.camera-list-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px;
+    font-size: 20px;
+}
+
+.initial-price {
+    color: gray;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.latest-price {
+    font-weight: bold;
+    color: black;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.star-icon {
+    color: #ccc;
+}
+
+.star-icon.filled {
+    color: #f39c12;
+}
