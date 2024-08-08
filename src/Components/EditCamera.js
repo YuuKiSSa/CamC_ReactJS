@@ -54,6 +54,7 @@ const EditCamera = () => {
     const handleDelete = async (e) => {
         e.preventDefault();
         try{
+            window.confirm("Are you sure you want to delete this camera?");
             await axios.delete(`http://localhost:8080/api/delete-camera/${id}`, {withCredentials: true});
             navigate("/admin-home");
         }catch (error){
