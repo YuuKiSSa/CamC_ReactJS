@@ -10,7 +10,7 @@ const UserReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/review/${id}`);
+        const response = await axios.get(`http://13.229.204.191:8080/api/review/${id}`);
         const allReviews = response.data.flatMap(user => user.reviews);
         setReviews(allReviews);
       } catch (error) {

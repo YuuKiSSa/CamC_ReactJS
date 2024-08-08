@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import '../CSS/CameraDetail.css';
 import CameraLineChart from './Graph/CameraLineChart';
@@ -11,13 +11,12 @@ import axios from 'axios';
 const CameraDetail = () => {
     const { id } = useParams();
     const [camera, setCamera] = useState(null);
-    const [isFavorite, setIsFavorite] = useState(false);
     const [mainImageUrl, setMainImageUrl] = useState('');
 
     // Function to fetch camera details
-    const fetchCamera = async () => {
+    const fetchCamera = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/main/${id}`);
+            const response = await fetch(`http://13.229.204.191:8080/api/main/${id}`);
             if (!response.ok) throw new Error('Failed to fetch camera data');
             const data = await response.json();
             setCamera(data);
@@ -25,32 +24,11 @@ const CameraDetail = () => {
         } catch (error) {
             console.error('Failed to fetch camera data:', error);
         }
-    };
-
-    // Function to fetch user's favorite cameras
-    const fetchFavorites = async () => {
-        try {
-            const response = await fetch('http://localhost:8080/api/favorite', { credentials: 'include' });
-            if (response.status === 401) {
-                return; // Handle unauthorized status if necessary
-            }
-            const data = await response.json();
-            const favoriteIds = data.map(favorite => favorite.cameraId);
-            setIsFavorite(favoriteIds.includes(id));
-        } catch (error) {
-            console.error('Failed to fetch favorites:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchCamera();
     }, [id]);
 
     useEffect(() => {
-        if (camera) {
-            fetchFavorites();
-        }
-    }, [camera]);
+        fetchCamera();
+    }, [fetchCamera, id]);
 
     const handleAddToFavorite = async () => {
         if (!camera) return;
@@ -63,22 +41,17 @@ const CameraDetail = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/api/favorite/add', {
+            await axios.post('http://13.229.204.191:8080/api/favorite/add', {
                 cameraId: id,
                 idealPrice: parseFloat(idealPrice)
             }, {
                 withCredentials: true
             });
-
-            if (response.status === 200) {
-                setIsFavorite(true); // Set as favorite upon successful addition
-                await fetchFavorites(); // Fetch updated favorites to ensure synchronization
-            } else {
-                alert('Failed to add to favorites.');
-            }
         } catch (error) {
-            console.error('Failed to add to favorites:', error);
-            alert('Failed to add to favorites. Please try again later.');
+            if (error.response.status === 401)
+                alert('Pleasel login first.');
+            else if(error.response.status === 500)
+                alert('Already added to favorite.');
         }
     };
 
@@ -136,7 +109,7 @@ const CameraDetail = () => {
                     </div>
                     <div className="favorite">
                         <button className="back-button" onClick={handleAddToFavorite}>
-                            {isFavorite ? 'Added to Favorite' : 'Add to Favorite'}
+                            Add to Favorite
                         </button>
                         <button className="back-button" onClick={() => window.history.back()}>
                             &#9664; Back
