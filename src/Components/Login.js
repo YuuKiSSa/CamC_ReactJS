@@ -12,7 +12,7 @@ function Login() {
     const handleLogin = async (e) =>{
         e.preventDefault();
         try{
-            await axios.post("http://13.229.204.191:8080/api/login", {username, password}, { withCredentials: true });
+            await axios.post("http://localhost:8080/api/login", {username, password}, { withCredentials: true });
             navigate("/gallery", { state: { fromLogin: true } })
         } catch(error){
             console.error(error);

@@ -11,7 +11,7 @@ function SignUp() {
     const handleSignUp = async (e) => {
         e.preventDefault();
         try{
-            await axios.post("http://13.229.204.191:8080/api/register", {username, password});
+            await axios.post("http://localhost:8080/api/register", {username, password});
             window.alert("Sign up successfully! Please login again!");
             window.location.href = "/login";
         } catch(error){

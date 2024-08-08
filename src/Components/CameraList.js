@@ -24,12 +24,12 @@ const CameraList = () => {
 
     useEffect(() => {
         const fetchCameras = async () => {
-            const response_list = await fetch(`http://13.229.204.191:8080/api/list`);
+            const response_list = await fetch(`http://localhost:8080/api/list`);
             const data_list = await response_list.json();
             setCameras(data_list.cameras);
         };
         const fetchCamerasLike = async () => {
-            const response_like = await fetch(`http://13.229.204.191:8080/api/you-may-like`, { credentials: 'include' });
+            const response_like = await fetch(`http://localhost:8080/api/you-may-like`, { credentials: 'include' });
             if (response_like.status !== 401) {
                 const data_like = await response_like.json();
                 setCamerasLike(data_like);
