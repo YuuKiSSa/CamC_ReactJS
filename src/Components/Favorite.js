@@ -84,7 +84,7 @@ const Favorite = () => {
         if (newIdealPrice !== null && newIdealPrice !== "" && !isNaN(newIdealPrice)) {
             try {
                 await handleDelete(cameraId); // 删除当前相机
-                await axios.post('http://13.229.204.191:8080/api/favorite/add', { cameraId, idealPrice: newIdealPrice }, { withCredentials: true });
+                await axios.post('http://localhost:8080/api/favorite/add', { cameraId, idealPrice: newIdealPrice }, { withCredentials: true });
                 setFavorites(prevFavorites => [...prevFavorites, { cameraId, idealPrice: newIdealPrice }]);
             } catch (error) {
                 console.error('Failed to change ideal price:', error);

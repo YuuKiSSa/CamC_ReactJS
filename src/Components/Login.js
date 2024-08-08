@@ -12,8 +12,16 @@ function Login() {
     const handleLogin = async (e) =>{
         e.preventDefault();
         try{
-            await axios.post("http://localhost:8080/api/login", {username, password}, { withCredentials: true });
-            navigate("/gallery", { state: { fromLogin: true } })
+            const isAdmin = username.startsWith("admin/");
+            const cleanUsername = isAdmin ? username.replace("admin/", "") : username;
+            const endpoint = isAdmin ? "http://localhost:8080/api/admin-login" : "http://localhost:8080/api/login";
+            const redirectPath = isAdmin ? "/admin-home" : "/gallery";
+            if (isAdmin){
+                await axios.post("http://localhost:8080/api/admin-login", {id: cleanUsername, password}, {withCredentials: true});
+            }else{
+                await axios.post(endpoint, { username: cleanUsername, password }, { withCredentials: true });
+            }
+            navigate(redirectPath, { state: { fromLogin: true } });
         } catch(error){
             console.error(error);
             setError("Wrong username or password!");

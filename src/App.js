@@ -10,6 +10,8 @@ import CameraDetail from './Components/CameraDetail';
 import Favorites from "./Components/Favorite";
 import SignUp from "./Components/SignUp";
 import ContactPage from './Components/ContactPage';
+import AdminHome from "./Components/AdminHome";
+import EditCamera from "./Components/EditCamera";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
                       <Route path="/favorite" element={<Favorites />} />
                       <Route path="/signup" element={<SignUp />} />
                       <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/admin-home" element={<AdminHome />} />
+                      <Route path="/edit-camera/:id" element={<EditCamera />} />
                   </Routes>
               </div>
               <Footer />

@@ -11,7 +11,7 @@ function LoginButton() {
             try {
                 const response = await fetch('http://localhost:8080/api/current-user', { credentials: 'include' });
                 const data = await response.json();
-                setUser(data.username);
+                setUser(data.username || data.id);
             } catch (error) {
                 console.error('Failed to fetch user', error);
             }
