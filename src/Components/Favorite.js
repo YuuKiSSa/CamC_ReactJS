@@ -25,7 +25,7 @@ const Favorite = () => {
         };
 
         const fetchCameraList = async () => {
-            const response_list = await fetch(`http://13.229.204.191/api/list`);
+            const response_list = await fetch(`http://13.229.204.191:8080/api/list`);
             const data_list = await response_list.json();
             setCameraList(data_list.cameras);
         };
