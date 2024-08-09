@@ -17,7 +17,7 @@ const CameraLineChart = ({ cameraModel }) => {
       setError(null);
 
       try {
-        const response = await axios.get(`http://13.213.1.218/predict/${id}`);
+        const response = await axios.get(`http://13.213.1.218:5000/predict/${id}`);
         console.log('API response data:', response.data);
         
         const formattedData = Object.entries(response.data).map(([date, value]) => ({
