@@ -27,7 +27,7 @@ const CameraList = () => {
         const fetchCameras = async () => {
             setLoading(true); // 数据加载开始，显示 Loading
             try {
-                const responseList = await fetch('http://localhost:8080/api/list');
+                const responseList = await fetch('http://13.213.1.218:8080/api/list');
                 const dataList = await responseList.json();
                 setCameras(dataList.cameras);
             } catch (error) {
@@ -39,7 +39,7 @@ const CameraList = () => {
 
         const fetchCamerasLike = async () => {
             try {
-                const responseLike = await fetch('http://localhost:8080/api/you-may-like', { credentials: 'include' });
+                const responseLike = await fetch('http://13.213.1.218:8080/api/you-may-like', { credentials: 'include' });
                 if (responseLike.status !== 401) {
                     const dataLike = await responseLike.json();
                     setCamerasLike(dataLike);

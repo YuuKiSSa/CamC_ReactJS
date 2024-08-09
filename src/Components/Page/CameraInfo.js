@@ -7,7 +7,7 @@ const CameraInfo = () => {
   const [details, setDetails] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/details/${id}`)
+    fetch(`http://13.213.1.218:8080/api/details/${id}`)
       .then(response => response.json())
       .then(data => setDetails(data))
       .catch(error => console.error('Error fetching data:', error));
