@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function LoginButton() {
     const [user, setUser] = React.useState(null);
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -26,6 +27,7 @@ function LoginButton() {
                 const response = await axios.post('http://localhost:8080/api/logout', null, { withCredentials: true });
                 console.log(response);
                 setUser(null);
+                navigate("");
             } catch (error) {
                 console.error('Logout failed', error);
             }
