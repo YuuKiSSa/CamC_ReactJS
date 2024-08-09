@@ -2,6 +2,26 @@
     padding: 20px;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-camera-button {
+    padding: 10px 20px;
+    background-color: #397D54;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-camera-button:hover {
+    background-color: #235D3A;
+}
+
 .admin-camera-list table {
     width: 100%;
     border-collapse: collapse;

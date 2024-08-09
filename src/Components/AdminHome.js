@@ -53,7 +53,10 @@ function AdminCameraList() {
 
     return (
         <div className="admin-camera-list">
-            <h1>Camera List</h1>
+            <div className="header">
+                <h1>Camera List</h1>
+                <button onClick={() => navigate("/add-camera")} className="add-camera-button">Add Camera</button>
+            </div>
             <table>
                 <thead>
                 <tr>

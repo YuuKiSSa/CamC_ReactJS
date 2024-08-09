@@ -1,0 +1,95 @@
+/* AddCamera.css */
+
+.add-camera {
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-camera h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-camera form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-camera label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #555;
+    text-align: left;
+}
+
+.add-camera input[type="text"],
+.add-camera input[type="date"],
+.add-camera input[type="number"],
+.add-camera select,
+.add-camera textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.add-camera textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.add-camera button[type="button"] {
+    align-self: flex-start;
+    padding: 8px 15px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.add-camera button[type="button"]:hover {
+    background-color: #397D54;
+    color: white;;
+}
+
+.add-camera button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #197D54;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-camera button[type="submit"]:hover {
+    background-color: #397D54;
+}
+
+.add-camera form div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.add-camera form div input {
+    flex: 1;
+}
+
+.add-camera select {
+    height: 40px;
+}

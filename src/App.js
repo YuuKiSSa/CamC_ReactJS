@@ -12,6 +12,7 @@ import SignUp from "./Components/SignUp";
 import ContactPage from './Components/ContactPage';
 import AdminHome from "./Components/AdminHome";
 import EditCamera from "./Components/EditCamera";
+import AddCamera from "./Components/AddCamera";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                       <Route path="/contact" element={<ContactPage />} />
                       <Route path="/admin-home" element={<AdminHome />} />
                       <Route path="/edit-camera/:id" element={<EditCamera />} />
+                      <Route path="/add-camera" element={<AddCamera />} />
                   </Routes>
               </div>
               <Footer />
