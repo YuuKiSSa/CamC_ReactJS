@@ -19,7 +19,7 @@ const MainContent = () => {
         <div className="home">
             <div className="main-content">
                 <section className="intro-section">
-                    <div className="header">
+                    <div className="home-header">
                         <h1><span className="word-find">Find</span> Your Favourite </h1>
                         <h1><span className="word-camera">Camera</span></h1>
                     </div>
