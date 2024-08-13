@@ -88,3 +88,31 @@
 .sign-up-button a:hover {
     color: #ffffff;
 }
+
+.user-btn {
+    border: 2px solid #397D54;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.user-btn:hover {
+    background-color: #397D54;
+    color: #ffffff;
+}
+
+.user-btn a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.user-btn a:hover {
+    color: #ffffff;
+}

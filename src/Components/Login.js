@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "../CSS/Login.css"
@@ -8,6 +8,14 @@ function Login() {
     const [password, setPassword] = React.useState('');
     const [error, setError] = React.useState('');
     const navigate = useNavigate();
+    const [redirect_back, setRedirectBack] = React.useState('');
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const redirect_back = params.get('redirect');
+        setRedirectBack(redirect_back);
+
+    }, []);
 
     const handleLogin = async (e) =>{
         e.preventDefault();
@@ -21,7 +29,11 @@ function Login() {
             }else{
                 await axios.post(endpoint, { username: cleanUsername, password }, { withCredentials: true });
             }
-            navigate(redirectPath, { state: { fromLogin: true } });
+            if (redirect_back !== null){
+                navigate(redirect_back, {state: {fromLogin: true}});
+            }else{
+                navigate(redirectPath, { state: { fromLogin: true } });
+            }
         } catch(error){
             console.error(error);
             setError("Wrong username or password!");

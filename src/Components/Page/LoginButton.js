@@ -35,11 +35,18 @@ function LoginButton() {
         }
     };
 
+    const handleUserClick = () => {
+        navigate('/comments');
+    };
+
     return (
         <div className="auth-buttons">
             {user ? (
                 <div className="auth-buttons">
-                    <h2>Welcome, {user}!</h2>
+                    <h2>Welcome</h2>
+                    <button onClick={handleUserClick} className="user-btn">
+                        {user}
+                    </button>
                     <button className="sign-up-button" onClick={handleLogout}>Logout</button>
                 </div>
             ) : (
