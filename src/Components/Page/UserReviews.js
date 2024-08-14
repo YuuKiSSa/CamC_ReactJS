@@ -16,7 +16,7 @@ const UserReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/review/${id}`);
+        const response = await axios.get(`http://13.213.1.218:8080/api/review/${id}`);
         const allReviews = response.data.flatMap(user => user.reviews);
         setReviews(allReviews);
       } catch (error) {
@@ -41,7 +41,7 @@ const UserReviews = () => {
 
   const handleSubmitReview = async () => {
     try {
-      await axios.get(`http://localhost:8080/api/current-user`, { withCredentials: true });
+      await axios.get(`http://13.213.1.218:8080/api/current-user`, { withCredentials: true });
     } catch (error) {
       if (error.response && error.response.status === 401) {
         localStorage.setItem('pendingReview', JSON.stringify({
@@ -64,7 +64,7 @@ const UserReviews = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:8080/api/add-review`, {
+      const response = await axios.post(`http://13.213.1.218:8080/api/add-review`, {
         cameraId: id,
         comment: newReview,
         rate: newRating,

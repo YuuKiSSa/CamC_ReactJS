@@ -12,8 +12,8 @@ function AdminCameraList() {
     useEffect(() => {
         const fetchCameras = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/list");
-                const adminResponse = await axios.get("http://localhost:8080/api/current-user", { withCredentials: true });
+                const response = await axios.get("http://13.213.1.218:8080/api/list");
+                const adminResponse = await axios.get("http://13.213.1.218:8080/api/current-user", { withCredentials: true });
                 setCameras(response.data.cameras);
                 if (adminResponse.data.id !== 'admin'){
                     window.alert("You can't access the admin page!");

@@ -11,7 +11,7 @@ function Review() {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/review/all", {withCredentials: true});
+                const response = await axios.get("http://13.213.1.218:8080/api/review/all", {withCredentials: true});
                 setReviews(response.data);
             } catch (error) {
                 console.log("Error fetching reviews:", error);
@@ -25,7 +25,7 @@ function Review() {
         <div className="review-list-container">
             <div className="review-head">
                 <button className="review-back-btn" onClick={() => {
-                    navigate(-1)
+                    navigate("/admin-home")
                 }}>Back
                 </button>
                 <h1>All Reviews({reviews.length})</h1>

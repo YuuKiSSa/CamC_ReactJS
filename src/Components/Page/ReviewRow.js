@@ -9,7 +9,7 @@ function ReviewRow({ review }) {
     useEffect(() => {
         const fetchCamera = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/main/${review.cameraId}`);
+                const response = await axios.get(`http://13.213.1.218:8080/api/main/${review.cameraId}`);
                 const cameraData = response.data;
                 setCamera(cameraData);
                 setImage(cameraData.imageUrls[0]);
@@ -24,7 +24,7 @@ function ReviewRow({ review }) {
     const handleDelete = () => {
         const deleteCamera = async () => {
             try{
-                await axios.delete(`http://localhost:8080/api/delete-review/${review.reviewId}`, {withCredentials: true});
+                await axios.delete(`http://13.213.1.218:8080/api/delete-review/${review.reviewId}`, {withCredentials: true});
 
             } catch (error) {
                 console.log('Error deleting review', error);

@@ -9,7 +9,7 @@ const CameraInfo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/details/${id}`, { credentials: 'include' });
+        const response = await fetch(`http://13.213.1.218:8080/api/details/${id}`, { credentials: 'include' });
         const data = await response.json();
         setDetails(data);
       } catch (error) {

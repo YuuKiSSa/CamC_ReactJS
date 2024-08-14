@@ -22,10 +22,10 @@ function Login() {
         try{
             const isAdmin = username.startsWith("admin/");
             const cleanUsername = isAdmin ? username.replace("admin/", "") : username;
-            const endpoint = isAdmin ? "http://localhost:8080/api/admin-login" : "http://localhost:8080/api/login";
+            const endpoint = isAdmin ? "http://13.213.1.218:8080/api/admin-login" : "http://13.213.1.218:8080/api/login";
             const redirectPath = isAdmin ? "/admin-home" : "/gallery";
             if (isAdmin){
-                await axios.post("http://localhost:8080/api/admin-login", {id: cleanUsername, password}, {withCredentials: true});
+                await axios.post("http://13.213.1.218:8080/api/admin-login", {id: cleanUsername, password}, {withCredentials: true});
             }else{
                 await axios.post(endpoint, { username: cleanUsername, password }, { withCredentials: true });
             }

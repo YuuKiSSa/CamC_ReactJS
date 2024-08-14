@@ -77,7 +77,7 @@ const AddCamera = () => {
         };
         try {
             console.log(formattedDetails);
-            await axios.post('http://localhost:8080/api/add-camera', formattedDetails, {withCredentials: true});
+            await axios.post('http://13.213.1.218:8080/api/add-camera', formattedDetails, {withCredentials: true});
             alert("Camera added successfully");
             navigate("/admin-home");
         } catch (error) {

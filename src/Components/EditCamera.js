@@ -24,7 +24,7 @@ const EditCamera = () => {
     useEffect(() => {
         const fetchCameraDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/camera/${id}`);
+                const response = await axios.get(`http://13.213.1.218:8080/api/camera/${id}`);
                 setCameraDetails(response.data);
             } catch (error) {
                 console.error("Failed to fetch camera details:", error);
@@ -44,7 +44,7 @@ const EditCamera = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:8080/api/update-camera/${id}`, cameraDetails, {withCredentials: true});
+            await axios.put(`http://13.213.1.218:8080/api/update-camera/${id}`, cameraDetails, {withCredentials: true});
             navigate("/admin-home");
         } catch (error) {
             console.error("Failed to update camera details:", error);
@@ -55,7 +55,7 @@ const EditCamera = () => {
         e.preventDefault();
         try{
             window.confirm("Are you sure you want to delete this camera?");
-            await axios.delete(`http://localhost:8080/api/delete-camera/${id}`, {withCredentials: true});
+            await axios.delete(`http://13.213.1.218:8080/api/delete-camera/${id}`, {withCredentials: true});
             navigate("/admin-home");
         }catch (error){
             console.error("Failed to delete camera details:", error);

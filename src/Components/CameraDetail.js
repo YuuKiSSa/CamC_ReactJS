@@ -16,7 +16,7 @@ const CameraDetail = () => {
     // Function to fetch camera details
     const fetchCamera = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/main/${id}`);
+            const response = await fetch(`http://13.213.1.218:8080/api/main/${id}`);
             if (!response.ok) throw new Error('Failed to fetch camera data');
             const data = await response.json();
             setCamera(data);
@@ -41,7 +41,7 @@ const CameraDetail = () => {
         }
 
         try {
-            await axios.post('http://localhost:8080/api/favorite/add', {
+            await axios.post('http://13.213.1.218:8080/api/favorite/add', {
                 cameraId: id,
                 idealPrice: parseFloat(idealPrice)
             }, {
