@@ -7,10 +7,17 @@ const CameraInfo = () => {
   const [details, setDetails] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/details/${id}`)
-      .then(response => response.json())
-      .then(data => setDetails(data))
-      .catch(error => console.error('Error fetching data:', error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/details/${id}`, { credentials: 'include' });
+        const data = await response.json();
+        setDetails(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   if (!details) return <div>Loading...</div>;

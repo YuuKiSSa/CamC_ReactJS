@@ -25,7 +25,7 @@ const CameraList = () => {
 
     useEffect(() => {
         const fetchCameras = async () => {
-            setLoading(true); // 数据加载开始，显示 Loading
+            setLoading(true);
             try {
                 const responseList = await fetch('http://localhost:8080/api/list');
                 const dataList = await responseList.json();
