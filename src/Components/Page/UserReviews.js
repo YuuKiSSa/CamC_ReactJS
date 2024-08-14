@@ -113,7 +113,32 @@ const UserReviews = () => {
   };
 
   if (!reviews.length) {
-    return <div>Loading...</div>;
+    return (
+        <div className="user-reviews-container">
+          <h2>User Reviews</h2>
+
+          <div className="add-review-container">
+            <h3>Add Your Review</h3>
+            <textarea
+                value={newReview}
+                onChange={(e) => setNewReview(e.target.value)}
+                placeholder="Write your review here..."
+            />
+            <div className="rating">
+              {[...Array(5)].map((_, i) => (
+                  <span
+                      key={i}
+                      className={`submit_star ${i < newRating ? 'submit_filled' : ''}`}
+                      onClick={() => handleRatingChange(i + 1)}
+                  >
+              ★
+            </span>
+              ))}
+            </div>
+            <button onClick={handleSubmitReview} className="submit_review">Submit Review</button>
+          </div>
+        </div>
+    )
   }
 
   return (
