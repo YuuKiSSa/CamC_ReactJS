@@ -32,6 +32,36 @@
     border-radius: 8px;
 }
 
+.review-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+}
+
+.review-back-btn {
+    position: absolute;
+    left: 0;
+    padding: 10px 20px;
+    background-color: #197D54;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.review-back-btn:hover {
+    background-color: #397D54;
+}
+
+.review-head h1 {
+    margin: 0 auto;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 .review-list-details {
     display: flex;
     flex-direction: column;

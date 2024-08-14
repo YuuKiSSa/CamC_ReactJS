@@ -101,7 +101,11 @@ const EditCamera = () => {
                 <textarea id="description" onChange={handleChange} value={cameraDetails.description} rows="4" cols="50"/>
                 <button type="submit" className="btn-save">Save Changes</button>
             </form>
-            <button className="btn-delete" onClick={handleDelete}>Delete Camera</button>
+            <div>
+                <button className="btn-back" onClick={() => navigate(-1)}>Back</button>
+                <button className="btn-delete" onClick={handleDelete}>Delete Camera</button>
+            </div>
+
         </div>
     );
 };

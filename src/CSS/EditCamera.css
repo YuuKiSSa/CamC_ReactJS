@@ -48,8 +48,19 @@
     text-align: center;
 }
 
-.edit-camera .btn-save:hover {
+.edit-camera .btn-save .btn-back:hover {
     background-color: #45a049;
+}
+
+.btn-back {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 20px;
 }
 
 .btn-delete{

@@ -137,7 +137,8 @@ const AddCamera = () => {
 
                 {/* Video Resolution */}
                 <label htmlFor="videoResolution">Video Resolution</label>
-                <input id="videoResolution" onChange={handleChange} type="number" value={cameraDetails.videoResolution}/>
+                <input id="videoResolution" onChange={handleChange} type="number"
+                       value={cameraDetails.videoResolution}/>
 
                 {/* Video Rate */}
                 <label htmlFor="videoRate">Video Rate</label>
@@ -161,7 +162,8 @@ const AddCamera = () => {
                 <button type="button" onClick={() => setCameraDetails(prevDetails => ({
                     ...prevDetails,
                     imageUrls: [...prevDetails.imageUrls, ""]
-                }))}>Add Image URL</button>
+                }))}>Add Image URL
+                </button>
 
                 {/* Websites */}
                 <label>Websites</label>
@@ -227,8 +229,11 @@ const AddCamera = () => {
                     prices: [...prevDetails.prices, {date: "", price: "", platform: ""}]
                 }))}>Add Price
                 </button>
+                <div className="btn-add">
+                    <button type="submit">Add Camera</button>
+                    <button className="btn-save" onClick={() => navigate(-1)}>Back</button>
+                </div>
 
-                <button type="submit" className="btn-save">Add Camera</button>
             </form>
         </div>
     );

@@ -2,9 +2,11 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import "../CSS/Review.css"
 import ReviewRow from "./Page/ReviewRow";
+import {Navigate, useNavigate} from "react-router-dom";
 
 function Review() {
     const [reviews, setReviews] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -21,7 +23,14 @@ function Review() {
 
     return (
         <div className="review-list-container">
-        <h1>All Reviews({reviews.length})</h1>
+            <div className="review-head">
+                <button className="review-back-btn" onClick={() => {
+                    navigate(-1)
+                }}>Back
+                </button>
+                <h1>All Reviews({reviews.length})</h1>
+            </div>
+
             <div className="review-list-table">
                 {reviews.map((review) => (
                     <ReviewRow key={review.reviewId} review={review} />
