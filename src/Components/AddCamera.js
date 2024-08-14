@@ -174,19 +174,23 @@ const AddCamera = () => {
                             type="text"
                             value={site.website}
                         />
-                        <input
-                            placeholder="Platform"
+                        <select
                             onChange={(event) => handleArrayChange(index, event, "websites", "platform")}
                             onBlur={() => handleBlur("websites")}
-                            type="text"
                             value={site.platform}
-                        />
+                        >
+                            <option value="">--Select Platform--</option>
+                            <option value="Amazon">Amazon</option>
+                            <option value="JD">JD</option>
+                            <option value="TB">TB</option>
+                        </select>
                     </div>
                 ))}
                 <button type="button" onClick={() => setCameraDetails(prevDetails => ({
                     ...prevDetails,
-                    websites: [...prevDetails.websites, { website: "", platform: "" }]
-                }))}>Add Website</button>
+                    websites: [...prevDetails.websites, {website: "", platform: ""}]
+                }))}>Add Website
+                </button>
 
                 {/* Prices */}
                 <label>Prices</label>
@@ -206,19 +210,23 @@ const AddCamera = () => {
                             type="number"
                             value={price.price}
                         />
-                        <input
-                            placeholder="Platform"
+                        <select
                             onChange={(event) => handleArrayChange(index, event, "prices", "platform")}
                             onBlur={() => handleBlur("prices")}
-                            type="text"
                             value={price.platform}
-                        />
+                        >
+                            <option value="">--Select Platform--</option>
+                            <option value="Amazon">Amazon</option>
+                            <option value="JD">JD</option>
+                            <option value="TB">TB</option>
+                        </select>
                     </div>
                 ))}
                 <button type="button" onClick={() => setCameraDetails(prevDetails => ({
                     ...prevDetails,
-                    prices: [...prevDetails.prices, { date: "", price: "", platform: "" }]
-                }))}>Add Price</button>
+                    prices: [...prevDetails.prices, {date: "", price: "", platform: ""}]
+                }))}>Add Price
+                </button>
 
                 <button type="submit" className="btn-save">Add Camera</button>
             </form>
