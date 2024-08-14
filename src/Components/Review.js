@@ -25,7 +25,7 @@ function Review() {
         <div className="review-list-container">
             <div className="review-head">
                 <button className="review-back-btn" onClick={() => {
-                    navigate("/admin-home")
+                    navigate(-1)
                 }}>Back
                 </button>
                 <h1>All Reviews({reviews.length})</h1>
