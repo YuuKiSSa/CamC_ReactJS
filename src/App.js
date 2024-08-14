@@ -14,6 +14,7 @@ import AdminHome from "./Components/AdminHome";
 import EditCamera from "./Components/EditCamera";
 import AddCamera from "./Components/AddCamera";
 import Review from "./Components/Review";
+import AdminReviewList from "./Components/AdminReviewList";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
                       <Route path="/edit-camera/:id" element={<EditCamera />} />
                       <Route path="/add-camera" element={<AddCamera />} />
                       <Route path="/comments" element={<Review />} />
+                      <Route path="admin-review-list" element={<AdminReviewList />} />
                   </Routes>
               </div>
               <Footer />
