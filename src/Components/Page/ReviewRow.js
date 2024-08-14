@@ -36,7 +36,7 @@ function ReviewRow({ review }) {
 
     return (
         <div className="review-list-row">
-            <div className="camera-image">
+            <div className="review-camera-image">
                 <img src={image} alt="Camera"/>
             </div>
             <div className="review-list-details">
