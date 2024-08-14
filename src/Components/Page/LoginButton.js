@@ -44,7 +44,7 @@ function LoginButton() {
             {user ? (
                 <div className="auth-buttons">
                     <h2>Welcome</h2>
-                    <button onClick={handleUserClick} className="user-btn">
+                    <button onClick={handleUserClick} className="user-btn" title={'Click to view your reviews'}>
                         {user}
                     </button>
                     <button className="sign-up-button" onClick={handleLogout}>Logout</button>

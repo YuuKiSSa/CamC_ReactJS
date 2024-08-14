@@ -1,0 +1,76 @@
+.reviews-list-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.review-list-table {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-list-row {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+.camera-image {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.camera-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.review-list-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.review-list-details div {
+    margin-bottom: 10px;
+}
+
+.review-list-details strong {
+    color: #397D54;
+}
+
+.review-time-and-delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-button {
+    width: 80px;
+    height: 30px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+.review-list-rate {
+    font-weight: bold;
+    font-size: 20px;
+}
